@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Álbum Panini Copa 2026 ⚽ — Super Cazarotto Redefort • Rodeio Bonito/RS</title>
+<!-- PWA / Atalho na tela inicial -->
+<meta name="theme-color" content="#009C3B">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Cazarotto 2026">
+<meta name="application-name" content="Figurinhas Cazarotto Rodeio Bonito">
+<meta name="description" content="Álbum Panini Copa 2026 — Super Cazarotto Redefort, Rodeio Bonito/RS">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="64x64" href="favicon-64.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<style>
+  :root{
+    --blue:#002776; --blue-dark:#001a52; --blue-soft:#e6ecf5;
+    --blue-assistec:#004AAD; --blue-assistec-dark:#003580;
+    --green:#009C3B; --green-dark:#007a2e; --green-light:#dcfce7;
+    --red:#ce1126; --red-dark:#a30d1e;
+    --yellow:#FFDF00; --yellow-dark:#e0c200;
+    --gold:#FFDF00;
+    --bg:#f1f5f9;
+    --surface:#fff;
+    --border:#e2e8f0;
+    --border-soft:#eef2f7;
+    --text:#0f172a;
+    --text-muted:#64748b;
+    --text-subtle:#94a3b8;
+    --shadow-xs:0 1px 2px rgba(15,23,42,.05);
+    --shadow-sm:0 1px 3px rgba(15,23,42,.08), 0 1px 2px rgba(15,23,42,.04);
+    --shadow-md:0 4px 12px rgba(15,23,42,.08);
+    --shadow-lg:0 12px 32px rgba(15,23,42,.12);
+    --shadow-xl:0 24px 60px rgba(15,23,42,.18);
+    --radius-sm:8px; --radius-md:12px; --radius-lg:16px; --radius-xl:20px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;
+    background:var(--bg);
+    background-image:
+      radial-gradient(ellipse at top left,rgba(0,156,59,.10),transparent 55%),
+      radial-gradient(ellipse at bottom right,rgba(255,223,0,.12),transparent 55%);
+    background-attachment:fixed;
+    min-height:100vh;
+    color:var(--text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+  }
+
+  /* ============== HERO (banner Assistec + título integrados) ============== */
+  .hero{background:var(--surface);box-shadow:var(--shadow-md);position:relative}
+  .hero-banner{padding:22px 24px 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff,#fafbfd)}
+  .hero-banner img{max-height:78px;width:auto;max-width:340px;display:block}
+  .hero-accent{height:5px;background:linear-gradient(90deg,var(--green) 0%,var(--yellow) 50%,var(--blue) 100%)}
+  .hero-title{
+    background:linear-gradient(135deg,#007a2e 0%,var(--green) 45%,#00b347 100%);
+    color:#fff;padding:28px 24px;text-align:center;position:relative;overflow:hidden;
+  }
+  .hero-title::before{
+    content:'';position:absolute;inset:0;
+    background:
+      radial-gradient(circle at 15% 30%,rgba(255,223,0,.18),transparent 45%),
+      radial-gradient(circle at 85% 70%,rgba(255,255,255,.10),transparent 50%);
+    pointer-events:none;
+  }
+  .hero-title::after{
+    content:'';position:absolute;top:-40%;right:-10%;width:320px;height:320px;
+    background:radial-gradient(circle,rgba(255,223,0,.30),transparent 60%);
+    pointer-events:none;
+  }
+  .hero-title h1{font-size:28px;font-weight:800;letter-spacing:-.6px;margin-bottom:6px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+  .hero-title p{font-size:14px;opacity:.94;font-weight:500;position:relative;letter-spacing:.2px}
+  .hero-title p strong{font-weight:700}
+
+  /* ============== FAIXA PROMO LOJA ============== */
+  .store-promo{
+    max-width:1100px;margin:16px auto 0;
+    background:linear-gradient(135deg,#003580 0%,#0050b3 50%,#0066d6 100%);
+    color:#fff;padding:18px 22px;
+    border-radius:var(--radius-md);
+    display:flex;align-items:center;gap:14px;
+    position:relative;overflow:hidden;
+    box-shadow:var(--shadow-md);
+    border:2px solid var(--yellow);
+  }
+  .store-promo::before{
+    content:'';position:absolute;top:-60%;right:-15%;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(255,223,0,.20),transparent 60%);
+    pointer-events:none;
+  }
+  .store-promo::after{
+    content:'';position:absolute;bottom:-40%;left:-10%;width:200px;height:200px;
+    background:radial-gradient(circle,rgba(255,255,255,.10),transparent 60%);
+    pointer-events:none;
+  }
+  .store-icon{
+    font-size:42px;flex-shrink:0;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));
+    position:relative;
+  }
+  .store-text{flex:1;display:flex;flex-direction:column;gap:2px;position:relative;line-height:1.25}
+  .store-text .store-eyebrow{font-size:12px;opacity:.92;letter-spacing:.6px;text-transform:uppercase;font-weight:600;color:var(--yellow)}
+  .store-text strong{font-size:18px;font-weight:800;letter-spacing:.5px;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .store-text .store-sub{font-size:12.5px;opacity:.92;font-weight:500;margin-top:2px}
+  @media (max-width:768px){
+    .store-promo{margin:12px 12px 0;padding:14px 16px;gap:10px}
+    .store-icon{font-size:32px}
+    .store-text strong{font-size:15px}
+    .store-text .store-eyebrow{font-size:10.5px}
+    .store-text .store-sub{font-size:11.5px}
+  }
+
+  /* ============== CONTAINER PRINCIPAL ============== */
+  .content{
+    max-width:1100px;margin:24px auto;background:var(--surface);
+    border-radius:var(--radius-lg);overflow:hidden;
+    box-shadow:var(--shadow-xl),0 0 0 1px rgba(15,23,42,.04);
+  }
+  @media (max-width:768px){
+    .content{margin:16px 12px;border-radius:var(--radius-md)}
+  }
+
+  /* ============== STATS ============== */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px;background:linear-gradient(180deg,#fafbfd,#fff);border-bottom:1px solid var(--border-soft)}
+  .stat{
+    background:var(--surface);padding:16px 12px;border-radius:var(--radius-md);
+    text-align:center;border:1px solid var(--border);position:relative;overflow:hidden;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .stat:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .stat::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--text-subtle);border-radius:var(--radius-md) var(--radius-md) 0 0}
+  .stat.have::before{background:linear-gradient(90deg,var(--green),#00a050)}
+  .stat.miss::before{background:linear-gradient(90deg,var(--red),#ec3247)}
+  .stat.pct::before{background:linear-gradient(90deg,var(--blue),#0066d6)}
+  .stat .label{font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.7px;font-weight:600;margin-bottom:4px}
+  .stat .value{font-size:26px;font-weight:800;letter-spacing:-1px;font-variant-numeric:tabular-nums;line-height:1.1}
+  .stat.have .value{color:var(--green)}
+  .stat.miss .value{color:var(--red)}
+  .stat.pct .value{color:var(--blue)}
+
+  /* ============== PROGRESS BAR ============== */
+  .progress-bar{height:10px;background:#f1f5f9;margin:0 20px 16px;border-radius:999px;overflow:hidden;position:relative;box-shadow:inset 0 1px 2px rgba(15,23,42,.06)}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow),#00b347);transition:width .6s cubic-bezier(.22,1,.36,1);border-radius:999px;position:relative;overflow:hidden}
+  .progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:shimmer 2.5s infinite}
+  @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+
+  /* ============== CONTROLES ============== */
+  .controls{padding:16px 20px;background:var(--surface);border-bottom:1px solid var(--border-soft);display:flex;flex-wrap:wrap;gap:8px}
+  .controls input{flex:1;min-width:180px;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:14px;background:#fafbfd;transition:all .15s;color:var(--text)}
+  .controls input::placeholder{color:var(--text-subtle)}
+  .controls input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,74,173,.12);background:#fff}
+
+  /* ============== BOTÕES ============== */
+  .btn{padding:11px 16px;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s ease;white-space:nowrap;display:inline-flex;align-items:center;justify-content:center;gap:6px;letter-spacing:.2px;font-family:inherit}
+  .btn:active{transform:scale(.97)}
+  .btn-primary{background:linear-gradient(180deg,#007a3a,var(--green));color:#fff;box-shadow:0 1px 2px rgba(0,99,65,.3),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn-primary:hover{background:linear-gradient(180deg,#008a44,#005a3b);box-shadow:0 4px 10px rgba(0,99,65,.35),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn-danger{background:linear-gradient(180deg,#dc1a30,var(--red));color:#fff;box-shadow:0 1px 2px rgba(206,17,38,.3),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn-danger:hover{background:linear-gradient(180deg,#e02236,var(--red-dark));box-shadow:0 4px 10px rgba(206,17,38,.35),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn-secondary{background:#f1f5f9;color:#334155;border:1px solid var(--border)}
+  .btn-secondary:hover{background:#e2e8f0;border-color:#cbd5e1}
+
+  /* ============== HELP ============== */
+  .help{padding:12px 14px;background:linear-gradient(135deg,#eff6ff,#dbeafe);border-radius:var(--radius-sm);font-size:12px;color:#0c4a6e;margin:0 20px 16px;border:1px solid #bae6fd;line-height:1.6}
+  .help strong{color:var(--blue);font-weight:700}
+
+  /* ============== TABS ============== */
+  .tabs{display:flex;background:#f8fafc;border-bottom:1px solid var(--border-soft);position:sticky;top:0;z-index:10;backdrop-filter:saturate(180%) blur(8px);background-color:rgba(248,250,252,.92)}
+  .tab{flex:1;padding:15px;text-align:center;cursor:pointer;font-weight:600;color:var(--text-muted);border-bottom:3px solid transparent;transition:all .2s ease;font-size:14px;position:relative}
+  .tab:hover{color:var(--text);background:rgba(241,245,249,.5)}
+  .tab.active{background:var(--surface);color:var(--green);border-bottom-color:var(--green)}
+  .tab .count{display:inline-block;background:#e2e8f0;color:#475569;padding:2px 9px;border-radius:999px;font-size:11px;margin-left:6px;font-weight:700;font-variant-numeric:tabular-nums;transition:all .2s}
+  .tab.active .count{background:var(--green);color:#fff}
+
+  /* ============== SEARCH ============== */
+  .search-wrap{padding:14px 20px;background:#fafbfd;border-bottom:1px solid var(--border-soft)}
+  .search-wrap input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:14px;background:#fff;transition:all .15s}
+  .search-wrap input:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px rgba(0,74,173,.12)}
+
+  /* ============== TAB CONTENT / SECTIONS ============== */
+  .tab-content{padding:0;min-height:300px}
+  .empty{text-align:center;padding:60px 20px;color:var(--text-subtle);font-size:14px}
+  .empty .emoji{font-size:48px;display:block;margin-bottom:12px;opacity:.5}
+  .section{border-bottom:1px solid var(--border-soft)}
+  .section:last-child{border-bottom:none}
+  .section-header{padding:13px 20px;background:#fafbfd;cursor:pointer;display:flex;align-items:center;gap:10px;user-select:none;transition:background .15s}
+  .section-header:hover{background:#f1f5f9}
+  .section-flag{font-size:22px;line-height:1}
+  .section-title{flex:1;font-weight:600;font-size:14px;color:var(--text)}
+  .section-progress{font-size:11px;color:var(--text-muted);background:#fff;padding:3px 10px;border-radius:999px;border:1px solid var(--border);font-weight:600;font-variant-numeric:tabular-nums}
+  .section-progress.complete{background:var(--green-light);color:#15803d;border-color:#86efac}
+  .section-arrow{transition:transform .2s;color:var(--text-subtle);font-size:12px}
+  .section.expanded .section-arrow{transform:rotate(90deg)}
+  .section-body{display:none;padding:14px 20px 18px;background:#fff}
+  .section.expanded .section-body{display:block}
+
+  /* ============== STICKERS ============== */
+  .sticker-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:6px}
+  .sticker{display:flex;align-items:center;gap:8px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:all .15s ease;font-size:12px;border:1px solid transparent;user-select:none}
+  .sticker .code{font-weight:700;font-size:11px;min-width:46px;font-family:'SF Mono','Cascadia Code','Courier New',monospace;letter-spacing:-.3px}
+  .sticker .nm{flex:1;line-height:1.25;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+  .sticker.have{background:linear-gradient(135deg,#007a3a,var(--green-dark));color:#fff;box-shadow:0 1px 3px rgba(0,99,65,.3),inset 0 1px 0 rgba(255,255,255,.1)}
+  .sticker.have:hover{transform:translateX(3px);box-shadow:0 3px 8px rgba(0,99,65,.4),inset 0 1px 0 rgba(255,255,255,.1)}
+  .sticker.miss{background:#fef2f2;color:#7f1d1d;border-color:#fecaca}
+  .sticker.miss:hover{background:#fee2e2;transform:translateX(3px);border-color:#fca5a5}
+  .sticker.special{position:relative}
+  .sticker.special::after{content:'★';position:absolute;top:3px;right:5px;font-size:9px;color:var(--gold);text-shadow:0 0 3px rgba(251,191,36,.5)}
+  .sticker.have.special::after{color:#fde68a}
+  .sticker.confirm-remove{background:linear-gradient(135deg,var(--red),var(--red-dark));color:#fff;animation:pulse-warn .6s ease-in-out infinite alternate;box-shadow:0 0 0 2px var(--gold),0 4px 12px rgba(206,17,38,.5)}
+  .sticker.confirm-remove .nm::before{content:'Clique de novo p/ remover • '}
+  .sticker.confirm-remove.special::after{color:#fde68a}
+  @keyframes pulse-warn{from{transform:scale(1)}to{transform:scale(1.03)}}
+
+  /* ============== LOADING ============== */
+  .loading{text-align:center;padding:80px 20px;color:var(--text-muted)}
+  .spinner{border:3px solid var(--border);border-top-color:var(--blue);border-radius:50%;width:36px;height:36px;animation:spin 1s linear infinite;margin:0 auto 14px}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ============== TOAST ============== */
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#0f172a;color:#fff;padding:12px 22px;border-radius:var(--radius-sm);box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:opacity .25s ease,transform .25s ease;font-size:13px;font-weight:500;z-index:1000;max-width:90%;text-align:center;border:1px solid rgba(255,255,255,.1)}
+  .toast.show{opacity:1;transform:translateX(-50%) translateY(-10px)}
+
+  /* ============== FOOTER ============== */
+  .credits{
+    max-width:1100px;margin:0 auto 24px;
+    background:linear-gradient(135deg,var(--blue-assistec-dark),var(--blue-assistec));
+    color:#fff;padding:24px;text-align:center;
+    display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
+    font-size:13px;letter-spacing:.3px;
+    border-radius:var(--radius-md);
+    box-shadow:var(--shadow-md);
+    position:relative;overflow:hidden;
+  }
+  .credits::before{
+    content:'';position:absolute;top:-50%;left:-10%;width:300px;height:300px;
+    background:radial-gradient(circle,rgba(255,255,255,.08),transparent 60%);
+    pointer-events:none;
+  }
+  .credits-logo{height:38px;width:auto;max-width:160px;opacity:.95;position:relative;flex-shrink:0}
+  .credits-text{display:flex;flex-direction:column;align-items:center;gap:10px;position:relative}
+  .credits-text > div{font-size:13px;letter-spacing:.3px}
+  .credits span{position:relative}
+  .credits strong{font-weight:700;letter-spacing:.5px}
+  .whatsapp-btn{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(180deg,#2cdf6e,#25D366);color:#fff;padding:9px 16px;border-radius:999px;text-decoration:none;font-weight:700;font-size:13px;transition:all .18s ease;box-shadow:0 2px 8px rgba(37,211,102,.4),inset 0 1px 0 rgba(255,255,255,.25);letter-spacing:.3px;border:1px solid rgba(255,255,255,.15)}
+  .whatsapp-btn:hover{background:linear-gradient(180deg,#33e677,#1ebc5c);transform:translateY(-1px);box-shadow:0 6px 16px rgba(37,211,102,.55),inset 0 1px 0 rgba(255,255,255,.25)}
+  .whatsapp-btn:active{transform:translateY(0)}
+  .whatsapp-btn svg{width:16px;height:16px;fill:currentColor;flex-shrink:0}
+  @media (max-width:768px){.credits{margin:0 12px 16px}}
+
+  /* ============== INSTALL BAR ============== */
+  .install-bar{display:none;padding:12px 16px;background:linear-gradient(135deg,#fef3c7,#fde68a);border-bottom:1px solid #fcd34d;align-items:center;gap:12px;flex-wrap:wrap;animation:slide-down .3s ease}
+  @keyframes slide-down{from{transform:translateY(-100%);opacity:0}to{transform:translateY(0);opacity:1}}
+  .install-bar.show{display:flex}
+  .install-bar-text{flex:1;font-size:13px;color:#78350f;font-weight:500;min-width:0;line-height:1.4}
+  .install-bar-text strong{font-weight:700}
+  .btn-install{background:linear-gradient(180deg,#00b347,var(--green));color:#fff;padding:10px 18px;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 2px 6px rgba(0,156,59,.35),inset 0 1px 0 rgba(255,255,255,.18);transition:all .15s}
+  .btn-install:hover{box-shadow:0 4px 12px rgba(0,156,59,.45),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn-install:active{transform:scale(.96)}
+
+  /* ============== MODAL ============== */
+  .modal-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.65);z-index:2000;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(6px) saturate(180%)}
+  .modal-overlay.show{display:flex;animation:fade-in .2s ease}
+  @keyframes fade-in{from{opacity:0}to{opacity:1}}
+  .modal{background:#fff;border-radius:var(--radius-lg);max-width:460px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-xl);animation:modal-pop .3s cubic-bezier(.22,1,.36,1)}
+  @keyframes modal-pop{from{transform:scale(.92) translateY(20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+  .modal-header{padding:20px 22px;background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;border-radius:var(--radius-lg) var(--radius-lg) 0 0;display:flex;align-items:center;justify-content:space-between}
+  .modal-header h2{font-size:17px;font-weight:700;letter-spacing:-.2px}
+  .modal-close{background:rgba(255,255,255,.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s}
+  .modal-close:hover{background:rgba(255,255,255,.3)}
+  .modal-body{padding:22px}
+  .modal-body h3{font-size:14px;color:var(--text);margin-bottom:10px;font-weight:700}
+  .modal-body ol{padding-left:0;list-style:none;counter-reset:step}
+  .modal-body ol li{position:relative;padding:12px 12px 12px 46px;margin-bottom:8px;background:#f8fafc;border-radius:var(--radius-sm);font-size:13px;color:#374151;line-height:1.55;counter-increment:step;border:1px solid var(--border-soft)}
+  .modal-body ol li::before{content:counter(step);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:26px;height:26px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;box-shadow:0 2px 4px rgba(0,156,59,.3)}
+  .icon-box{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:#1f2937;color:#fff;border-radius:6px;font-size:14px;margin:0 3px;vertical-align:middle;font-weight:700}
+  .modal-tip{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1e40af;padding:11px 13px;border-radius:var(--radius-sm);font-size:12px;margin-top:14px;line-height:1.55;border:1px solid #93c5fd}
+
+  /* ============== RESPONSIVE ============== */
+  @media (max-width:600px){
+    .stats{grid-template-columns:repeat(2,1fr);padding:14px;gap:8px}
+    .stat{padding:12px 8px}
+    .stat .value{font-size:22px}
+    .hero-banner{padding:18px 16px 14px}
+    .hero-banner img{max-height:60px}
+    .hero-title{padding:22px 18px}
+    .hero-title h1{font-size:22px;letter-spacing:-.4px}
+    .hero-title p{font-size:13px}
+    .controls{padding:12px 14px;gap:6px}
+    .controls input{min-width:140px;font-size:13px}
+    .btn{padding:10px 14px;font-size:12.5px}
+    .help{margin:0 14px 12px;font-size:11.5px}
+    .progress-bar{margin:0 14px 12px}
+    .search-wrap{padding:12px 14px}
+    .section-header{padding:12px 14px}
+    .section-body{padding:12px 14px 16px}
+    .sticker-list{grid-template-columns:1fr 1fr;gap:5px}
+    .credits{padding:18px 16px;font-size:12px}
+    .credits-logo{height:30px}
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-banner">
+    <img src="assistec-banner.png" alt="Assistec Informática">
+  </div>
+  <div class="hero-accent"></div>
+  <div class="hero-title">
+    <h1>🇧🇷 ⚽ Álbum Panini — Copa do Mundo FIFA 2026™</h1>
+    <p><strong>980</strong> figurinhas • <strong>48</strong> seleções • <strong>68</strong> especiais (foil ★)</p>
+  </div>
+</header>
+
+<div class="store-promo">
+  <span class="store-icon">🛒</span>
+  <div class="store-text">
+    <span class="store-eyebrow">📍 Rodeio Bonito • RS</span>
+    <strong>SUPER CAZAROTTO • REDEFORT</strong>
+    <span class="store-sub">Venha completar seu álbum aqui na nossa loja! 🦛⚽</span>
+  </div>
+</div>
+
+<main class="content">
+  <div id="loading" class="loading">
+    <div class="spinner"></div>
+    Carregando álbum...
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="install-bar" id="install-bar">
+      <span class="install-bar-text">📱 Instale como <strong>app</strong> no seu celular pra acessar mais rápido!</span>
+      <button class="btn-install" onclick="installApp()">Instalar</button>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="label">Total</div><div class="value">980</div></div>
+      <div class="stat miss"><div class="label">Faltam</div><div class="value" id="stat-miss">980</div></div>
+      <div class="stat have"><div class="label">Coladas</div><div class="value" id="stat-have">0</div></div>
+      <div class="stat pct"><div class="label">Completo</div><div class="value" id="stat-pct">0%</div></div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
+
+    <div class="controls">
+      <button class="btn btn-secondary" onclick="exportData()">💾 Exportar</button>
+      <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">📂 Importar</button>
+      <button class="btn btn-secondary" onclick="resetAll()">🗑️ Limpar</button>
+      <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(event)">
+    </div>
+    <div class="help">💡 Clique em uma figurinha <strong>vermelha</strong> para marcar como "colada". <strong>2 cliques</strong> em uma figurinha verde para remover. 🔒 <strong>Salvamento automático</strong> — clique em "Exportar" de vez em quando para fazer backup.</div>
+
+    <div class="tabs">
+      <div class="tab" data-tab="miss" onclick="switchTab('miss')">
+        ❌ Faltantes <span class="count" id="count-miss">980</span>
+      </div>
+      <div class="tab active" data-tab="have" onclick="switchTab('have')">
+        ✅ Coladas <span class="count" id="count-have">0</span>
+      </div>
+    </div>
+
+    <div class="search-wrap">
+      <input type="text" id="search-input" placeholder="🔍 Buscar por código, jogador ou seleção..." oninput="render()">
+    </div>
+
+    <div class="tab-content" id="content"></div>
+  </div>
+</main>
+
+<footer class="credits">
+  <img src="assistec-banner-white.png" alt="Assistec Informática" class="credits-logo">
+  <div class="credits-text">
+    <div>⚽ APP Produzido por <strong>ASSISTEC INFORMÁTICA</strong></div>
+    <a href="https://wa.me/555537981003?text=Ol%C3%A1%20Assistec%21%20Vim%20pelo%20%C3%A1lbum%20da%20Copa%202026%20%F0%9F%87%A7%F0%9F%87%B7%E2%9A%BD" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Falar no WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
+      Falar no WhatsApp · (55) 3798-1003
+    </a>
+  </div>
+</footer>
+
+<!-- Modal de instruções de instalação (iOS / fallback) -->
+<div class="modal-overlay" id="install-modal" onclick="if(event.target===this)closeInstallModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="install-modal-title">📱 Instalar como App</h2>
+      <button class="modal-close" onclick="closeInstallModal()">✕</button>
+    </div>
+    <div class="modal-body" id="install-modal-body"></div>
+  </div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ============== DADOS DO ÁLBUM (980 figurinhas) ==============
+// Estrutura: Abertura (00 + FWC1-8) → 48 Seleções × 20 → História (FWC9-19)
+// Cada seleção: posição 1=Escudo (★), 2-12=jogadores, 13=Perfilada, 14-20=jogadores
+
+const INTRO = [
+  {c:'00',  n:'Logo Panini',                           s:1},
+  {c:'FWC1',n:'Emblema Oficial 1/2',                   s:1},
+  {c:'FWC2',n:'Emblema Oficial 2/2',                   s:1},
+  {c:'FWC3',n:'Mascotes Oficiais',                     s:1},
+  {c:'FWC4',n:'Slogan Oficial',                        s:1},
+  {c:'FWC5',n:'Bola Oficial',                          s:1},
+  {c:'FWC6',n:'Canadá — Países e Cidades-Sede',        s:1},
+  {c:'FWC7',n:'México — Países e Cidades-Sede',        s:1},
+  {c:'FWC8',n:'EUA — Países e Cidades-Sede',           s:1},
+];
+
+// Cada seleção: c=código, n=nome PT-BR, f=bandeira, p=18 jogadores em ordem do álbum
+// (posições 2-12 são p[0..10], posições 14-20 são p[11..17])
+const TEAMS = [
+  {c:'MEX',n:'México',f:'🇲🇽',p:['Luis Malagón','Johan Vasquez','Jorge Sánchez','Cesar Montes','Jesus Gallardo','Israel Reyes','Diego Lainez','Carlos Rodriguez','Edson Alvarez','Orbelin Pineda','Marcel Ruiz','Érick Sánchez','Hirving Lozano','Santiago Giménez','Raúl Jiménez','Alexis Vega','Roberto Alvarado','Cesar Huerta']},
+  {c:'RSA',n:'África do Sul',f:'🇿🇦',p:['Ronwen Williams','Sipho Chaine','Aubrey Modiba','Samukele Kabini','Mbekezeli Mbokazi','Khulumani Ndamane','Siyabonga Ngezana','Khuliso Mudau','Nkosinathi Sibisi','Teboho Mokoena','Thalente Mbatha','Bathasi Aubaas','Yaya Sithole','Sipho Mbule','Lyle Foster','Iqraam Rayners','Mohau Nkota','Oswin Appollis']},
+  {c:'KOR',n:'Coreia do Sul',f:'🇰🇷',p:['Hyeon-woo Jo','Seung-Gyu Kim','Min-jae Kim','Yu-min Cho','Young-woo Seol','Han-beom Lee','Tae-seok Lee','Myung-jae Lee','Jae-sung Lee','In-beom Hwang','Kang-in Lee','Seung-ho Paik','Jens Castrop','Dongg-yeong Lee','Gue-sung Cho','Heung-min Son','Hee-chan Hwang','Hyeon-Gyu Oh']},
+  {c:'CZE',n:'República Tcheca',f:'🇨🇿',p:['Matej Kovar','Jindrich Stanek','Ladislav Krejci','Vladimir Coufal','Jaroslav Zeleny','Tomas Holes','David Zima','Michal Sadilek','Lukas Provod','Lukas Cerv','Tomas Soucek','Pavel Sulc','Matej Vydra','Vasil Kusej','Tomas Chory','Vaclav Cerny','Adam Hlozek','Patrik Schick']},
+  {c:'CAN',n:'Canadá',f:'🇨🇦',p:['Dayne St.Clair','Alphonso Davies','Alistair Johnston','Samuel Adekugbe','Riche Larvea','Derek Cornelius','Moïse Bombito','Kamal Miller','Stephen Eustáquio','Ismaël Koné','Jonathan Osorio','Jacob Shaffelburg','Mathieu Choinière','Niko Sigur','Tajon Buchanan','Liam Millar','Cyle Larin','Jonathan David']},
+  {c:'BIH',n:'Bósnia e Herzegovina',f:'🇧🇦',p:['Nikola Vasilj','Amer Dedic','Sead Kolasinac','Tarik Muharemovic','Nihad Mujakic','Nikola Katic','Amir Hadziahmetovic','Benjamin Tahirovic','Armin Gigovic','Ivan Sunjic','Ivan Basic','Dzenis Burnic','Esmir Bajraktarevic','Amar Memic','Ermedin Demirovic','Edin Dzeko','Samed Bazdar','Haris Tabakovic']},
+  {c:'QAT',n:'Catar',f:'🇶🇦',p:['Meshaal Barsham','Sultan Albrake','Lucas Mendes','Homam Ahmed','Boualem Khoukhi','Pedro Miguel','Tarek Salman','Mohamed Al-Mannai','Karim Boudiaf','Assim Madibo','Ahmed Fatehi','Mohammed Waad','Abdulaziz Hatem','Hassan Al-Haydos','Edmilson Junior','Akram Hassan Afif','Ahmed Al Ganehi','Almoez Ali']},
+  {c:'SUI',n:'Suíça',f:'🇨🇭',p:['Gregor Kobel','Yvon Mvogo','Manuel Akanji','Ricardo Rodriguez','Nico Elvedi','Aurèle Amenda','Silvan Widmer','Granit Xhaka','Denis Zakaria','Remo Freuler','Fabian Rieder','Ardon Jashari','Johan Manzambi','Michel Aebischer','Breel Embolo','Ruben Vargas','Dan Ndoye','Zeki Amdouni']},
+  {c:'BRA',n:'Brasil',f:'🇧🇷',p:['Alisson','Bento','Marquinhos','Éder Militão','Gabriel Magalhães','Danilo','Wesley','Lucas Paquetá','Casemiro','Bruno Guimarães','Luiz Henrique','Vinicius Júnior','Rodrygo','João Pedro','Matheus Cunha','Gabriel Martinelli','Raphinha','Estêvão']},
+  {c:'MAR',n:'Marrocos',f:'🇲🇦',p:['Yassine Bounou','Munir El Kajoui','Achraf Hakimi','Noussair Mazraoui','Nayef Aguerd','Roman Saiss','Jawad El Yamio','Adam Masina','Sofyan Amrabat','Azzedine Ounahi','Eliesse Ben Seghir','Bilal El Khannouss','Ismael Saibari','Youssef En-Nesyri','Abde Ezzalzouli','Soufiane Rahimi','Brahim Diaz','Ayoub El Kaabi']},
+  {c:'HAI',n:'Haiti',f:'🇭🇹',p:['Johny Placide','Carlens Arcus','Martin Expérience','Jean-Kevin Duverne','Ricardo Adé','Duke Lacroix','Garven Metusala','Hannes Delcroix','Leverton Pierre','Danley Jean Jacques','Jean-Ricner Bellegarde','Christopher Attys','Derrick Etienne Jr','Josue Casimir','Ruben Providence','Duckens Nazon','Louicius Deedson','Frantzdy Pierrot']},
+  {c:'SCO',n:'Escócia',f:'🏴󠁧󠁢󠁳󠁣󠁴󠁿',p:['Angus Gunn','Jack Hendry','Kieran Tierney','Aaron Hickey','Andrew Robertson','Scott McKenna','John Souttar','Anthony Ralston','Grant Hanley','Scott McTominay','Billy Gilmour','Lewis Ferguson','Ryan Christie','Kenny McLean','John McGinn','Lyndon Dykes','Che Adams','Ben Gannon-Doak']},
+  {c:'USA',n:'Estados Unidos',f:'🇺🇸',p:['Math Freese','Chris Richards','Tim Ream','Mark McKenzie','Alex Freeman','Antonee Robinson','Tyler Adams','Tanner Tessmann','Weston McKenny','Christian Roldan','Timothy Weah','Diego Luna','Malik Tillman','Christian Pulisic','Brenden Aaronson','Ricardo Pepi','Haji Wright','Folarin Balogun']},
+  {c:'PAR',n:'Paraguai',f:'🇵🇾',p:['Roberto Fernandez','Orlando Gill','Gustavo Gomez','Fabián Balbuena','Juan José Cáceres','Omar Alderete','Junior Alonso','Mathías Villasanti','Diego Gomez','Damián Bobadilla','Andres Cubas','Matias Galarza Fonda','Julio Enciso','Alejandro Romero Gamarra','Miguel Almirón','Ramon Sosa','Angel Romero','Antonio Sanabria']},
+  {c:'AUS',n:'Austrália',f:'🇦🇺',p:['Mathew Ryan','Joe Gauci','Harry Souttar','Alessandro Circati','Jordan Bos','Aziz Behich','Cameron Burgess','Lewis Miller','Milos Degenek','Jackson Irvine','Riley McGree',"Aiden O'Neill",'Connor Metcalfe','Patrick Yazbek','Craig Goodwin','Kusini Vengi','Nestory Irankunda','Mohamed Touré']},
+  {c:'TUR',n:'Turquia',f:'🇹🇷',p:['Ugurcan Cakir','Mert Muldur','Zeki Celik','Abdulkerim Bardakci','Caglar Soyuncu','Merih Demiral','Ferdi Kadioglu','Kaan Ayhan','Ismail Yuksek','Hakan Calhanoglu','Orkun Kokcu','Arda Guler','Irfan Can Kahveci','Yunus Akgun','Can Uzun','Baris Alper Yilmaz','Kerem Akturkoglu','Kenan Yildiz']},
+  {c:'GER',n:'Alemanha',f:'🇩🇪',p:['Marc-André ter Stegen','Jonathan Tah','David Raum','Nico Schlotterbeck','Antonio Rüdiger','Waldemar Anton','Ridle Baku','Maximilian Mittelstadt','Joshua Kimmich','Florian Wirtz','Felix Nmecha','Leon Goretzka','Jamal Musiala','Serge Gnabry','Kai Havertz','Leroy Sane','Karim Adeyemi','Nick Woltemade']},
+  {c:'CUW',n:'Curaçao',f:'🇨🇼',p:['Eloy Room','Armando Obispo','Sherel Floranus','Jurien Gaari','Joshua Brenet','Roshon Van Eijma','Shurandy Sambo','Livano Comenencia','Godfried Roemeratoe','Juninho Bacuna','Leandro Bacuna','Tahith Chong','Kenji Gorre','Jearl Margaritha','Jurgen Locadia','Jeremy Antonisse','Gervane Kastaneer','Sontje Hansen']},
+  {c:'CIV',n:'Costa do Marfim',f:'🇨🇮',p:['Yahia Fofana','Ghislain Konan','Wilfried Singo','Odilon Kossounou','Evan Ndicka','Willy Boly','Emmanuel Agbadou','Ousmane Diomande','Franck Kessie','Seko Fofana','Ibrahim Sangare','Jean-Philippe Gbamin','Amad Diallo','Sébastien Haller','Simon Adingra','Yan Diomande','Evann Guessand','Oumar Diakite']},
+  {c:'ECU',n:'Equador',f:'🇪🇨',p:['Hernán Galíndez','Gonzalo Valle','Piero Hincapié','Pervis Estupiñán','Willian Pacho','Ángelo Preciado','Joel Ordóñez','Moises Caicedo','Alan Franco','Kendry Paez','Pedro Vite','John Veboah','Leonardo Campana','Gonzalo Plata','Nilson Angulo','Alan Minda','Kevin Rodriguez','Enner Valencia']},
+  {c:'NED',n:'Países Baixos',f:'🇳🇱',p:['Bart Verbruggen','Virgil van Dijk','Micky van de Ven','Jurrien Timber','Denzel Dumfries','Nathan Aké','Jeremie Frimpong','Jan Paul van Hecke','Tijjani Reijnders','Ryan Gravenberch','Teun Koopmeiners','Frenkie de Jong','Xavi Simons','Justin Kluivert','Memphis Depay','Donyell Malen','Wout Weghorst','Cody Gakpo']},
+  {c:'JPN',n:'Japão',f:'🇯🇵',p:['Zion Suzuki','Henry Heroki Mochizuki','Ayumu Seko','Junnosuke Suzuki','Shogo Taniguchi','Tsuyoshi Watanabe','Kaishu Sano','Yuki Soma','Ao Tanaka','Daichi Kamada','Takefusa Kubo','Ritsu Doan','Keito Nakamura','Takumi Minamino','Shuto Machino','Junya Ito','Koki Ogawa','Ayase Ueda']},
+  {c:'SWE',n:'Suécia',f:'🇸🇪',p:['Victor Johansson','Isak Hien','Gabriel Gudmundsson','Emil Holm','Victor Nilsson Lindelöf','Gustaf Lagerbielke','Lucas Bergvall','Hugo Larsson','Jesper Karlström','Yasin Ayari','Mattias Svanberg','Daniel Svensson','Ken Sema','Roony Bardghji','Dejan Kulusevski','Anthony Elanga','Alexander Isak','Viktor Gyökeres']},
+  {c:'TUN',n:'Tunísia',f:'🇹🇳',p:['Bechir Ben Said','Aymen Dahmen','Yan Valery','Montassar Talbi','Yassine Meriah','Ali Abdi','Dylan Bronn','Ellyes Skhiri','Aissa Laidouni','Ferjani Sassi','Mohamed Ali Ben Romdhane','Hannibal Mejbri','Elias Achouri','Elias Saad','Hazem Mastouri','Ismael Gharbi','Sayfallah Ltaief','Naim Sliti']},
+  {c:'BEL',n:'Bélgica',f:'🇧🇪',p:['Thibaut Courtois','Arthur Theate','Timothy Castagne','Zeno Debast','Brandon Mechele','Maxim De Cuyper','Thomas Meunier','Youri Tielemans','Amadou Onana','Nicolas Raskin','Alexis Saelemaekers','Hans Vanaken','Kevin De Bruyne','Jérémy Doku','Charles De Ketelaere','Leandro Trossard','Loïs Openda','Romelu Lukaku']},
+  {c:'EGY',n:'Egito',f:'🇪🇬',p:['Mohamed El Shenawy','Mohamed Hany','Mohamed Hamdy','Yasser Ibrahim','Khaled Sobhi','Ramy Rabia','Hossam Abdelmaguid','Ahmed Fatouh','Marwan Attia','Zizo','Hamdy Fathy','Mohamed Lasheen','Emam Ashour','Osama Faisal','Mohamed Salah','Mostafa Mohamed','Trezeguet','Omar Marmoush']},
+  {c:'IRN',n:'Irã',f:'🇮🇷',p:['Alireza Beiranvand','Morteza Pouraliganji','Ehsan Hajsafi','Milad Mohammadi','Shojae Khalilzadeh','Ramin Rezaeian','Hossein Kanaani','Sadegh Moharrami','Saleh Hardani','Saeed Ezatolahi','Saman Ghoddos','Omid Noorafkan','Roozbeh Cheshmi','Mohammad Mohebi','Sardar Azmoun','Mehdi Taremi','Alireza Jahanbakhsh','Ali Gholizadeh']},
+  {c:'NZL',n:'Nova Zelândia',f:'🇳🇿',p:['Max Crocombe Payne','Alex Paulsen','Michael Boxall','Liberato Cacace','Tim Payne','Tyler Bindon','Francis de Vries','Finn Surman','Joe Bell','Sarpreet Singh','Ryan Thomas','Matthew Garbett','Marko Stamenić','Ben Old','Chris Wood','Elijah Just','Callum McCowatt','Kosta Barbarouses']},
+  {c:'ESP',n:'Espanha',f:'🇪🇸',p:['Unai Simon','Robin Le Normand','Aymeric Laporte','Dean Huijsen','Pedro Porro','Dani Carvajal','Marc Cucurella','Martín Zubimendi','Rodri','Pedri','Fabian Ruiz','Mikel Merino','Lamine Yamal','Dani Olmo','Nico Williams','Ferran Torres','Álvaro Morata','Mikel Oyarzabal']},
+  {c:'CPV',n:'Cabo Verde',f:'🇨🇻',p:['Vozinha','Logan Costa','Pico','Diney','Steven Moreira','Wagner Pina','Joao Paulo','Yannick Semedo','Kevin Pina','Patrick Andrade','Jamiro Monteiro','Deroy Duarte','Garry Rodrigues','Jovane Cabral','Ryan Mendes','Dailon Livramento','Willy Semedo','Bebe']},
+  {c:'KSA',n:'Arábia Saudita',f:'🇸🇦',p:['Nawaf Alaqidi','Abdulrahman Al-Sanbi','Saud Abdulhamid','Nawaf Bouwashl','Jihad Thakri','Moteb Al-Harbi','Hassan Altambakti','Musab Aljuwayr','Ziyad Aljohani','Abdullah Alkhaibari','Nasser Aldawsari','Saleh Abu Alshamat','Marwan Alsahafi','Salem Aldawsari','Abdulrahman Al-Aboud','Feras Akbrikan','Saleh Alshehri','Abdullah Al-Hamdan']},
+  {c:'URU',n:'Uruguai',f:'🇺🇾',p:['Sergio Rochet','Santiago Mele','Ronald Araujo','José María Giménez','Sebastian Caceres','Mathias Olivera','Guillermo Varela','Nahitan Nandez','Federico Valverde','Giorgian De Arrascaeta','Rodrigo Bentancur','Manuel Ugarte','Nicolás de la Cruz','Maxi Araujo','Darwin Núñez','Federico Viñas','Rodrigo Aguirre','Facundo Pellistri']},
+  {c:'FRA',n:'França',f:'🇫🇷',p:['Mike Maignan','Theo Hernandez','William Saliba','Jules Kounde','Ibrahima Konate','Dayot Upamecano','Lucas Digne','Aurélien Tchouaméni','Eduardo Camavinga','Manu Kone','Adrien Rabiot','Michael Olise','Ousmane Dembele','Bradley Barcola','Désiré Doué','Kingsley Coman','Hugo Ekitike','Kylian Mbappe']},
+  {c:'SEN',n:'Senegal',f:'🇸🇳',p:['Edouard Mendy','Yehvann Diouf','Moussa Niakhaté','Abdoulaye Seck','Ismail Jakobs','El Hadji Malick Diouf','Kalidou Koulibaly','Idrissa Gana Gueye','Pape Matar Sarr','Pape Gueye','Habib Diarra','Lamine Camara','Sadio Mane','Ismaïla Sarr','Boulaye Dia','Iliman Ndiaye','Nicolas Jackson','Krepin Diatta']},
+  {c:'IRQ',n:'Iraque',f:'🇮🇶',p:['Jalal Hassan','Rebin Sulaka','Hussein Ali','Akam Hashem','Merchas Doski','Zaid Tahseen','Manaf Younis','Zidane Iqbal','Amir Al-Ammari','Ibrahim Bavesh','Ali Jasim','Youssef Amyn','Aimar Sher','Marko Farji','Osama Rashid','Ali Al-Hamadi','Aymen Hussein','Mohanad Ali']},
+  {c:'NOR',n:'Noruega',f:'🇳🇴',p:['Orjan Nyland','Julian Ryerson','Leo Ostigård','Kristoffer Vassbakk Ajer','Marcus Holmgren Pedersen','David Møller Wolfe','Torbjørn Heggem','Morten Thorsby','Martin Ødegaard','Sander Berge','Andreas Schjelderup','Patrick Berg','Erling Haaland','Alexander Sørloth','Aron Dønnum','Jorgen Strand Larsen','Antonio Nusa','Oscar Bobb']},
+  {c:'ARG',n:'Argentina',f:'🇦🇷',p:['Emiliano Martinez','Nahuel Molina','Cristian Romero','Nicolas Otamendi','Nicolas Tagliafico','Leonardo Balerdi','Enzo Fernandez','Alexis Mac Allister','Rodrigo De Paul','Exequiel Palacios','Leandro Paredes','Nico Paz','Franco Mastantuono','Nico Gonzalez','Lionel Messi','Lautaro Martinez','Julian Alvarez','Giuliano Simeone']},
+  {c:'ALG',n:'Argélia',f:'🇩🇿',p:['Alexis Guendouz','Ramy Bensebaini','Youcef Atal','Rayan Aït-Nouri','Mohamed Amine Tougai','Aïssa Mandi','Ismael Bennacer','Houssem Aquar','Hicham Boudaoui','Ramiz Zerrouki','Nabil Bentalab','Farés Chaibi','Riyad Mahrez','Said Benrahma','Anis Hadj Moussa','Amine Gouiri','Baghdad Bounedjah','Mohammed Amoura']},
+  {c:'AUT',n:'Áustria',f:'🇦🇹',p:['Alexander Schlager','Patrick Pentz','David Alaba','Kevin Danso','Philipp Lienhart','Stefan Posch','Phillipp Mwene','Alexander Prass','Xaver Schlager','Marcel Sabitzer','Konrad Laimer','Florian Grillitsch','Nicolas Seiwald','Romano Schmid','Patrick Wimmer','Christoph Baumgartner','Michael Gregoritsch','Marko Arnautović']},
+  {c:'JOR',n:'Jordânia',f:'🇯🇴',p:['Yazeed Abulaila','Ihsan Haddad','Mohammad Abu Hashish','Yazan Al-Arab','Abdallah Nasib','Saleem Obaid','Mohammad Abualnadi','Ibrahim Saadeh','Nizar Al-Rashdan','Noor Al-Rawabdeh','Mohannad Abu Taha','Amer Jamous','Musa Al-Taamari','Yazan Al-Naimat','Mahmoud Al-Mardi','Ali Olwan','Mohammad Abu Zrayq','Ibrahim Sabra']},
+  {c:'POR',n:'Portugal',f:'🇵🇹',p:['Diogo Costa','Jose Sa','Ruben Dias','João Cancelo','Diogo Dalot','Nuno Mendes','Gonçalo Inácio','Bernardo Silva','Bruno Fernandes','Ruben Neves','Vitinha','João Neves','Cristiano Ronaldo','Francisco Trincao','João Felix','Gonçalo Ramos','Pedro Neto','Rafael Leão']},
+  {c:'COD',n:'RD Congo',f:'🇨🇩',p:['Lionel Mpasi','Aaron Wan-Bissaka','Axel Tuanzebe','Arthur Masuaku','Chancel Mbemba','Joris Kayembe','Charles Pickel',"Ngal'ayel Mukau",'Edo Kayembe','Samuel Moutoussamy','Noah Sadiki','Théo Bongonda','Meschak Elia','Yoane Wissa','Brian Cipenga','Fiston Mayele','Cédric Bakambu','Nathanaël Mbuku']},
+  {c:'UZB',n:'Uzbequistão',f:'🇺🇿',p:['Utkir Yusupov','Farrukh Savfiev','Sherzod Nasrullaev','Umar Eshmurodov','Husniddin Aliqulov','Rustamjon Ashurmatov','Khojiakbar Alijonov','Abdukodir Khusanov','Odiljon Hamrobekov','Otabek Shukurov','Jamshid Iskanderov','Azizbek Turgunboev','Khojimat Erkinov','Eldor Shomurodov','Oston Urunov','Jaloliddin Masharipov','Igor Sergeev','Abbosbek Fayzullaev']},
+  {c:'COL',n:'Colômbia',f:'🇨🇴',p:['Camilo Vargas','David Ospina','Dávinson Sánchez','Yerry Mina','Daniel Munoz','Johan Mojica','Jhon Lucumí','Santiago Arias','Jefferson Lerma','Kevin Castaño','Richard Rios','James Rodriguez','Juan Fernando Quintero','Jorge Carrascal','Jon Arias','Jhon Cordova','Luis Suarez','Luis Diaz']},
+  {c:'ENG',n:'Inglaterra',f:'🏴󠁧󠁢󠁥󠁮󠁧󠁿',p:['Jordan Pickford','John Stones','Marc Guéhi','Ezri Konsa','Trent Alexander-Arnold','Reece James','Dan Burn','Jordan Henderson','Declan Rice','Jude Bellingham','Cole Palmer','Morgan Rogers','Anthony Gordon','Phil Foden','Bukayo Saka','Harry Kane','Marcus Rashford','Ollie Watkins']},
+  {c:'CRO',n:'Croácia',f:'🇭🇷',p:['Dominik Livaković','Duje Caleta-Car','Josko Gvardiol','Josip Stanišić','Luka Vušković','Josip Sutalo','Kristijan Jakic','Luka Modrić','Mateo Kovacic','Martin Baturina','Lovro Majer','Mario Pasalic','Petar Sucic','Ivan Perišić','Marco Pasalic','Ante Budimir','Andrej Kramarić','Franjo Ivanovic']},
+  {c:'GHA',n:'Gana',f:'🇬🇭',p:['Lawrence Ati Zigi','Tariq Lamptey','Mohammed Salisu','Alidu Seidu','Alexander Djiku','Gideon Mensah','Caleb Yirenkyi','Abdul Issahaku Fatawu','Thomas Partey','Salis Abdul Samed','Kamaldeen Sulemana','Mohammed Kudus','Inaki Williams','Jordan Ayew','Andrew Ayew','Joseph Paintsil','Osman Bukari','Antoine Semenyo']},
+  {c:'PAN',n:'Panamá',f:'🇵🇦',p:['Orlando Mosquera','Luis Mejia','Fidel Escobar','Andres Andrade','Michael Amir Murillo','Eric Davis','Jose Cordoba','Cesar Blackman','Cristian Martinez','Aníbal Godoy','Adalberto Carrasquilla','Édgar Bárcenas','Carlos Harvey','Ismael Díaz','Jose Fajardo','Cecilio Waterman','Jose Luiz Rodriguez','Alberto Quintero']},
+];
+
+const HISTORY = [
+  {c:'FWC9', n:'Itália 1934',              s:1},
+  {c:'FWC10',n:'Uruguai 1950',             s:1},
+  {c:'FWC11',n:'Alemanha Ocidental 1954',  s:1},
+  {c:'FWC12',n:'Brasil 1962',              s:1},
+  {c:'FWC13',n:'Alemanha Ocidental 1974',  s:1},
+  {c:'FWC14',n:'Argentina 1986',           s:1},
+  {c:'FWC15',n:'Brasil 1994',              s:1},
+  {c:'FWC16',n:'Brasil 2002',              s:1},
+  {c:'FWC17',n:'Itália 2006',              s:1},
+  {c:'FWC18',n:'Alemanha 2014',            s:1},
+  {c:'FWC19',n:'Argentina 2022',           s:1},
+];
+
+// ============== EXPANDIR DADOS ==============
+function buildAlbum() {
+  const sections = [];
+  sections.push({
+    id: 'intro', title: 'Abertura', flag: '🏆',
+    items: INTRO.map(x => ({code: x.c, name: x.n, special: !!x.s}))
+  });
+  TEAMS.forEach(t => {
+    const items = [];
+    items.push({code: t.c+'1', name: 'Escudo — '+t.n, special: true});
+    for (let i = 0; i < 11; i++) items.push({code: t.c+(i+2), name: t.p[i], special: false});
+    items.push({code: t.c+'13', name: 'Perfilada — '+t.n, special: false});
+    for (let i = 0; i < 7; i++) items.push({code: t.c+(i+14), name: t.p[i+11], special: false});
+    sections.push({id: t.c, title: t.n, flag: t.f, items});
+  });
+  sections.push({
+    id: 'history', title: 'História da Copa', flag: '📜',
+    items: HISTORY.map(x => ({code: x.c, name: x.n, special: !!x.s}))
+  });
+  return sections;
+}
+
+const SECTIONS = buildAlbum();
+const ALL_CODES = SECTIONS.flatMap(s => s.items.map(i => i.code));
+const TOTAL = ALL_CODES.length;
+
+// ============== ESTADO ==============
+const KEY = 'panini2026:have-v2';
+let haveSet = new Set();
+let currentTab = 'have';
+let expandedSections = new Set();
+
+// ============== INSTALAR COMO APP (PWA) ==============
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+const isAndroid = /Android/i.test(navigator.userAgent);
+const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+let deferredInstallPrompt = null;
+
+// PWA: manifest.json e ícones agora são arquivos estáticos referenciados no <head>.
+function setupPWA() { /* no-op: usando arquivos estáticos */ }
+
+// Captura evento de instalação do Android/Chrome
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  showInstallBar();
+});
+
+// Quando já instalado
+window.addEventListener('appinstalled', () => {
+  deferredInstallPrompt = null;
+  hideInstallBar();
+  toast('🎉 App instalado com sucesso!');
+});
+
+function showInstallBar() {
+  if (isStandalone) return; // já tá instalado
+  // Esconder se usuário já dispensou
+  if (localStorage.getItem('install_dismissed') === '1') return;
+  document.getElementById('install-bar').classList.add('show');
+}
+function hideInstallBar() {
+  document.getElementById('install-bar').classList.remove('show');
+}
+
+async function installApp() {
+  // Android/Chrome com prompt nativo disponível
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    const { outcome } = await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    if (outcome === 'accepted') {
+      hideInstallBar();
+    }
+    return;
+  }
+  // Caso contrário: mostra instruções manuais
+  showInstallInstructions();
+}
+
+function showInstallInstructions() {
+  const modal = document.getElementById('install-modal');
+  const body = document.getElementById('install-modal-body');
+  let html = '';
+
+  if (isIOS) {
+    html = `
+      <h3>iPhone / iPad (Safari)</h3>
+      <ol>
+        <li>Toque no botão de <strong>Compartilhar</strong> na barra inferior do Safari <span class="icon-box">⎋</span></li>
+        <li>Role para baixo e toque em <strong>"Adicionar à Tela de Início"</strong> <span class="icon-box">+</span></li>
+        <li>Confirme tocando em <strong>"Adicionar"</strong> no canto superior direito</li>
+        <li>Pronto! O atalho do app aparece na sua tela inicial 🎉</li>
+      </ol>
+      <div class="modal-tip">⚠️ Funciona apenas no <strong>Safari</strong>. Se estiver no Chrome ou outro navegador no iPhone, abra esta página no Safari primeiro.</div>
+    `;
+  } else if (isAndroid) {
+    html = `
+      <h3>Android (Chrome)</h3>
+      <ol>
+        <li>Toque no menu <strong>(⋮)</strong> no canto superior direito do Chrome</li>
+        <li>Toque em <strong>"Instalar app"</strong> ou <strong>"Adicionar à tela inicial"</strong></li>
+        <li>Confirme tocando em <strong>"Instalar"</strong> ou <strong>"Adicionar"</strong></li>
+        <li>Pronto! O app aparece junto dos seus outros apps 🎉</li>
+      </ol>
+      <div class="modal-tip">💡 Se não aparecer a opção, tente atualizar o Chrome ou abrir esta página em uma aba normal (não anônima).</div>
+    `;
+  } else {
+    html = `
+      <h3>Computador (Chrome/Edge)</h3>
+      <ol>
+        <li>Procure pelo ícone de <strong>instalação</strong> na barra de endereço (ao lado da estrela ⭐)</li>
+        <li>Clique e selecione <strong>"Instalar"</strong></li>
+        <li>O app abrirá em uma janela própria 🎉</li>
+      </ol>
+      <div class="modal-tip">💡 Funciona melhor no Chrome ou Edge.</div>
+    `;
+  }
+
+  body.innerHTML = html;
+  modal.classList.add('show');
+}
+
+function closeInstallModal() {
+  document.getElementById('install-modal').classList.remove('show');
+}
+
+// Mostra a barra para iOS (não dispara beforeinstallprompt) ou casos genéricos
+function maybeShowInstallBarFallback() {
+  if (isStandalone) return;
+  if (localStorage.getItem('install_dismissed') === '1') return;
+  // No iOS, sempre mostra; no Android só aparece quando o evento beforeinstallprompt dispara
+  if (isIOS) {
+    setTimeout(() => showInstallBar(), 1500);
+  }
+}
+
+// ============== INSTALAR COMO APP (FIM) ==============
+
+// ============== STORAGE (dupla camada: window.storage + localStorage) ==============
+const LS_KEY = 'panini2026_have_v2';
+
+async function loadData() {
+  let loaded = false;
+  // 1) Tenta window.storage (Claude env)
+  try {
+    if (typeof window.storage !== 'undefined' && window.storage.get) {
+      const r = await window.storage.get(KEY);
+      if (r && r.value) {
+        haveSet = new Set(JSON.parse(r.value));
+        loaded = true;
+      }
+    }
+  } catch (e) {}
+  // 2) Fallback: localStorage do navegador
+  if (!loaded) {
+    try {
+      const raw = localStorage.getItem(LS_KEY);
+      if (raw) haveSet = new Set(JSON.parse(raw));
+    } catch (e) {}
+  } else {
+    // Sincroniza para o localStorage também
+    try { localStorage.setItem(LS_KEY, JSON.stringify([...haveSet])); } catch (e) {}
+  }
+}
+
+async function saveData() {
+  const data = JSON.stringify([...haveSet]);
+  // Salva sempre no localStorage (rápido e local)
+  try { localStorage.setItem(LS_KEY, data); } catch (e) {}
+  // Salva também no window.storage se disponível (sincronização)
+  try {
+    if (typeof window.storage !== 'undefined' && window.storage.set) {
+      await window.storage.set(KEY, data);
+    }
+  } catch (e) {}
+}
+
+// ============== EXPORTAR / IMPORTAR ==============
+function exportData() {
+  const data = {
+    app: 'Album Panini Copa 2026',
+    version: 2,
+    exportedAt: new Date().toISOString(),
+    total: TOTAL,
+    have: [...haveSet].sort()
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  const date = new Date().toISOString().slice(0,10);
+  a.download = `album-panini-2026-backup-${date}.json`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+  toast(`💾 Backup baixado (${haveSet.size} figurinhas)`);
+}
+
+function importData(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async (e) => {
+    try {
+      const data = JSON.parse(e.target.result);
+      if (!data || !Array.isArray(data.have)) throw new Error('Arquivo inválido');
+      const codeSet = new Set(ALL_CODES);
+      const valid = data.have.filter(c => codeSet.has(c));
+      if (valid.length === 0) { toast('⚠️ Nenhuma figurinha válida no arquivo'); return; }
+      if (haveSet.size > 0) {
+        if (!confirm(`Você já tem ${haveSet.size} figurinhas marcadas.\n\nO arquivo tem ${valid.length} figurinhas.\n\nDeseja SUBSTITUIR pelas do arquivo? (Cancelar = mesclar/somar)`)) {
+          // Mesclar
+          valid.forEach(c => haveSet.add(c));
+        } else {
+          // Substituir
+          haveSet = new Set(valid);
+        }
+      } else {
+        haveSet = new Set(valid);
+      }
+      await saveData();
+      render();
+      toast(`✅ ${valid.length} figurinha(s) importada(s)`);
+    } catch (err) {
+      toast('❌ Arquivo inválido ou corrompido');
+    }
+    event.target.value = ''; // permite reimportar mesmo arquivo
+  };
+  reader.readAsText(file);
+}
+
+// ============== PARSER ==============
+function parseCodes(str) {
+  const out = new Set();
+  if (!str) return out;
+  const codeSet = new Set(ALL_CODES);
+  str.split(',').forEach(part => {
+    part = part.trim().toUpperCase().replace(/\s+/g,'');
+    if (!part) return;
+    if (part.includes('-')) {
+      const [a, b] = part.split('-');
+      const ma = a.match(/^([A-Z]+)(\d+)$/);
+      const mb = b.match(/^([A-Z]+)?(\d+)$/);
+      if (ma && mb) {
+        const prefix = ma[1];
+        const prefixB = mb[1] || prefix;
+        if (prefix === prefixB) {
+          const lo = parseInt(ma[2],10), hi = parseInt(mb[2],10);
+          const [s,e] = [Math.min(lo,hi), Math.max(lo,hi)];
+          for (let i = s; i <= e; i++) {
+            const code = prefix+i;
+            if (codeSet.has(code)) out.add(code);
+          }
+        }
+      }
+    } else {
+      if (codeSet.has(part)) out.add(part);
+    }
+  });
+  return out;
+}
+
+// ============== AÇÕES ==============
+async function addStickers() {
+  const input = document.getElementById('add-input');
+  const codes = parseCodes(input.value);
+  if (codes.size === 0) { toast('Códigos inválidos. Ex: BRA1, BRA9, BRA2-BRA10'); return; }
+  codes.forEach(c => haveSet.add(c));
+  input.value = '';
+  await saveData();
+  render();
+  toast(`✅ ${codes.size} figurinha(s) marcada(s)`);
+}
+async function removeStickers() {
+  const input = document.getElementById('add-input');
+  const codes = parseCodes(input.value);
+  if (codes.size === 0) { toast('Códigos inválidos'); return; }
+  let removed = 0;
+  codes.forEach(c => { if (haveSet.delete(c)) removed++; });
+  input.value = '';
+  await saveData();
+  render();
+  toast(`🗑️ ${removed} figurinha(s) desmarcada(s)`);
+}
+async function resetAll() {
+  if (!confirm('Apagar TODAS as figurinhas marcadas? Essa ação não pode ser desfeita.')) return;
+  haveSet.clear();
+  await saveData();
+  render();
+  toast('Tudo limpo!');
+}
+// Confirmação de remoção: 2 cliques (com timeout de 3s)
+let pendingRemove = null;     // código aguardando confirmação
+let pendingRemoveTimer = null;
+
+function clearPending() {
+  pendingRemove = null;
+  if (pendingRemoveTimer) { clearTimeout(pendingRemoveTimer); pendingRemoveTimer = null; }
+}
+
+async function toggleSticker(code) {
+  const isHave = haveSet.has(code);
+
+  // Marcar como tenho (clique único)
+  if (!isHave) {
+    if (pendingRemove) clearPending(); // cancela qualquer remoção pendente
+    haveSet.add(code);
+    await saveData();
+    render();
+    return;
+  }
+
+  // Remover (precisa de 2 cliques)
+  if (pendingRemove === code) {
+    // Segundo clique → confirma remoção
+    haveSet.delete(code);
+    clearPending();
+    await saveData();
+    render();
+    toast(`🗑️ ${code} removida`);
+  } else {
+    // Primeiro clique → pede confirmação
+    if (pendingRemove) clearPending();
+    pendingRemove = code;
+    pendingRemoveTimer = setTimeout(() => {
+      pendingRemove = null;
+      pendingRemoveTimer = null;
+      render();
+    }, 3000);
+    render();
+    toast('Clique de novo para remover');
+  }
+}
+function toggleSection(id) {
+  if (expandedSections.has(id)) expandedSections.delete(id);
+  else expandedSections.add(id);
+  render();
+}
+function switchTab(t) {
+  currentTab = t;
+  clearPending();
+  document.querySelectorAll('.tab').forEach(el => {
+    el.classList.toggle('active', el.dataset.tab === t);
+  });
+  render();
+}
+
+// ============== RENDER ==============
+function render() {
+  const have = haveSet.size;
+  const miss = TOTAL - have;
+  const pct = TOTAL > 0 ? Math.round((have/TOTAL)*100) : 0;
+
+  document.getElementById('stat-have').textContent = have;
+  document.getElementById('stat-miss').textContent = miss;
+  document.getElementById('stat-pct').textContent = pct + '%';
+  document.getElementById('progress').style.width = pct + '%';
+  document.getElementById('count-have').textContent = have;
+  document.getElementById('count-miss').textContent = miss;
+
+  const search = document.getElementById('search-input').value.trim().toLowerCase();
+  const content = document.getElementById('content');
+  let html = '';
+  let totalShown = 0;
+
+  SECTIONS.forEach(sec => {
+    const items = sec.items.filter(it => {
+      const isHave = haveSet.has(it.code);
+      if (currentTab === 'have' && !isHave) return false;
+      if (currentTab === 'miss' && isHave) return false;
+      if (search) {
+        const hay = (it.code + ' ' + it.name + ' ' + sec.title).toLowerCase();
+        if (!hay.includes(search)) return false;
+      }
+      return true;
+    });
+
+    if (items.length === 0) return;
+    totalShown += items.length;
+
+    const secHave = sec.items.filter(i => haveSet.has(i.code)).length;
+    const secTotal = sec.items.length;
+    const isComplete = secHave === secTotal;
+    const isExpanded = expandedSections.has(sec.id) || !!search;
+
+    html += `<div class="section ${isExpanded?'expanded':''}">`;
+    html += `<div class="section-header" onclick="toggleSection('${sec.id}')">`;
+    html += `<span class="section-arrow">▶</span>`;
+    html += `<span class="section-flag">${sec.flag}</span>`;
+    html += `<span class="section-title">${sec.title}</span>`;
+    html += `<span class="section-progress ${isComplete?'complete':''}">${secHave}/${secTotal}</span>`;
+    html += `</div>`;
+    html += `<div class="section-body">`;
+    html += `<div class="sticker-list">`;
+    items.forEach(it => {
+      const cls = haveSet.has(it.code) ? 'have' : 'miss';
+      const sp = it.special ? ' special' : '';
+      const pending = pendingRemove === it.code ? ' confirm-remove' : '';
+      const safeName = it.name.replace(/"/g,'&quot;').replace(/</g,'&lt;');
+      html += `<div class="sticker ${cls}${sp}${pending}" onclick="toggleSticker('${it.code}')" title="${it.code} — ${safeName}">`;
+      html += `<span class="code">${it.code}</span>`;
+      html += `<span class="nm">${safeName}</span>`;
+      html += `</div>`;
+    });
+    html += `</div></div></div>`;
+  });
+
+  if (totalShown === 0) {
+    let msg;
+    if (search) msg = `<span class="emoji">🔍</span>Nada encontrado para "${search}"`;
+    else if (currentTab === 'have') msg = `<span class="emoji">📭</span>Você ainda não marcou nenhuma figurinha.<br>Use o campo acima para começar!`;
+    else msg = `<span class="emoji">🎉</span>Parabéns! Álbum completo!`;
+    html = `<div class="empty">${msg}</div>`;
+  }
+
+  content.innerHTML = html;
+}
+
+// ============== TOAST ==============
+let toastTimer;
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 2400);
+}
+
+// ============== INIT ==============
+(async function init() {
+  setupPWA();
+  await loadData();
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+  if (TOTAL !== 980) console.warn('Total inesperado:', TOTAL);
+  render();
+  maybeShowInstallBarFallback();
+})();
+</script>
+</body>
+</html>
