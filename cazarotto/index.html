@@ -54,10 +54,47 @@
     line-height:1.5;
   }
 
-  /* ============== HERO (banner Assistec + título integrados) ============== */
+  /* ============== HERO (banner Cazarotto Redefort) ============== */
   .hero{background:var(--surface);box-shadow:var(--shadow-md);position:relative}
-  .hero-banner{padding:22px 24px 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff,#fafbfd)}
-  .hero-banner img{max-height:78px;width:auto;max-width:340px;display:block}
+  .hero-banner{padding:22px 24px 20px;display:flex;align-items:center;justify-content:center;gap:18px;background:linear-gradient(180deg,#fff,#fafbfd);flex-wrap:wrap}
+  .hero-banner img.hero-logo-store{height:96px;width:96px;border-radius:50%;object-fit:cover;flex-shrink:0;box-shadow:0 4px 14px rgba(0,53,128,.25),0 0 0 3px var(--yellow);background:#003580}
+  .hero-store-text{display:flex;flex-direction:column;align-items:flex-start;line-height:1.05;text-align:left}
+  .hero-store-text .store-title-1{font-size:32px;font-weight:900;color:#003580;letter-spacing:-.5px;line-height:1}
+  .hero-store-text .store-title-2{font-size:26px;font-weight:800;color:#0066d6;letter-spacing:.3px;line-height:1;margin-top:2px}
+  .hero-store-text .store-loc{font-size:13px;color:var(--text-muted);font-weight:600;margin-top:8px;letter-spacing:.4px;display:inline-flex;align-items:center;gap:5px}
+  @media (max-width:480px){
+    .hero-banner{gap:14px;padding:18px 16px}
+    .hero-banner img.hero-logo-store{height:74px;width:74px}
+    .hero-store-text .store-title-1{font-size:24px}
+    .hero-store-text .store-title-2{font-size:19px}
+    .hero-store-text .store-loc{font-size:12px;margin-top:6px}
+  }
+
+  /* ============== HORÁRIOS DA LOJA ============== */
+  .store-hours{
+    max-width:1100px;margin:10px auto 0;
+    background:var(--surface);
+    border-radius:var(--radius-md);
+    padding:16px 20px 16px 56px;
+    display:flex;justify-content:center;align-items:center;
+    flex-wrap:wrap;gap:12px 32px;
+    box-shadow:var(--shadow-sm);
+    border:1px solid var(--border-soft);
+    position:relative;
+  }
+  .store-hours::before{
+    content:'🕒';position:absolute;top:50%;left:18px;transform:translateY(-50%);
+    font-size:24px;line-height:1;
+  }
+  .hours-row{display:flex;align-items:center;gap:10px;font-size:13.5px;line-height:1.3}
+  .hours-day{font-weight:800;color:var(--blue-assistec-dark);text-transform:uppercase;letter-spacing:.5px;font-size:11px;background:var(--yellow);padding:3px 9px;border-radius:5px}
+  .hours-time{color:var(--text);font-variant-numeric:tabular-nums;font-weight:600;letter-spacing:.2px}
+  @media (max-width:768px){
+    .store-hours{margin:8px 12px 0;padding:14px 16px 14px 44px;gap:10px 0;flex-direction:column;align-items:flex-start}
+    .store-hours::before{font-size:20px;left:14px;top:18px;transform:none}
+    .hours-row{font-size:12.5px;flex-wrap:wrap;gap:8px}
+    .hours-day{font-size:10px}
+  }
   .hero-accent{height:5px;background:linear-gradient(90deg,var(--green) 0%,var(--yellow) 50%,var(--blue) 100%)}
   .hero-title{
     background:linear-gradient(135deg,#007a2e 0%,var(--green) 45%,#00b347 100%);
@@ -309,7 +346,12 @@
 <body>
 <header class="hero">
   <div class="hero-banner">
-    <img src="assistec-banner.png" alt="Assistec Informática">
+    <img src="logo.jpg" alt="Super Cazarotto Redefort" class="hero-logo-store">
+    <div class="hero-store-text">
+      <span class="store-title-1">SUPER CAZAROTTO</span>
+      <span class="store-title-2">REDEFORT</span>
+      <span class="store-loc">📍 Rodeio Bonito · RS</span>
+    </div>
   </div>
   <div class="hero-accent"></div>
   <div class="hero-title">
@@ -321,9 +363,20 @@
 <div class="store-promo">
   <span class="store-icon">🛒</span>
   <div class="store-text">
-    <span class="store-eyebrow">📍 Rodeio Bonito • RS</span>
+    <span class="store-eyebrow">Visite a loja!</span>
     <strong>SUPER CAZAROTTO • REDEFORT</strong>
     <span class="store-sub">Venha completar seu álbum aqui na nossa loja! 🦛⚽</span>
+  </div>
+</div>
+
+<div class="store-hours">
+  <div class="hours-row">
+    <span class="hours-day">Seg - Sex</span>
+    <span class="hours-time">07:30 — 12:00 · 13:30 — 19:00</span>
+  </div>
+  <div class="hours-row">
+    <span class="hours-day">Sábado</span>
+    <span class="hours-time">07:30 — 12:00 · 14:00 — 19:00</span>
   </div>
 </div>
 
@@ -375,9 +428,9 @@
   <img src="assistec-banner-white.png" alt="Assistec Informática" class="credits-logo">
   <div class="credits-text">
     <div>⚽ APP Produzido por <strong>ASSISTEC INFORMÁTICA</strong></div>
-    <a href="https://wa.me/555537981003?text=Ol%C3%A1%20Assistec%21%20Vim%20pelo%20%C3%A1lbum%20da%20Copa%202026%20%F0%9F%87%A7%F0%9F%87%B7%E2%9A%BD" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Falar no WhatsApp">
+    <a href="https://wa.me/555537981256?text=Ol%C3%A1%21%20Vim%20pelo%20%C3%A1lbum%20da%20Copa%202026%20%F0%9F%87%A7%F0%9F%87%B7%E2%9A%BD" target="_blank" rel="noopener" class="whatsapp-btn" aria-label="Falar no WhatsApp">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M13.601 2.326A7.85 7.85 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.9 7.9 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.9 7.9 0 0 0 13.6 2.326zM7.994 14.521a6.6 6.6 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.56 6.56 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592m3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.73.73 0 0 0-.529.247c-.182.198-.691.677-.691 1.654s.71 1.916.81 2.049c.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232"/></svg>
-      Falar no WhatsApp · (55) 3798-1003
+      Falar no WhatsApp · (55) 3798-1256
     </a>
   </div>
 </footer>
