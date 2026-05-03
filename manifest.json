@@ -1,7 +1,7 @@
 {
-  "name": "Álbum Panini Copa do Mundo 2026",
-  "short_name": "Panini 2026",
-  "description": "Gerenciador de figurinhas Panini Copa 2026 - Assistec Informática",
+  "name": "Figurinhas Copa 2026",
+  "short_name": "Figurinhas 2026",
+  "description": "Gerenciador de figurinhas Panini Copa do Mundo 2026",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
