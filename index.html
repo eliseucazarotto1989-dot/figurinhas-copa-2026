@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Álbum Panini Copa 2026 ⚽</title>
 <!-- PWA / Atalho na tela inicial -->
-<meta name="theme-color" content="#004AAD">
+<meta name="theme-color" content="#009C3B">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -18,10 +18,12 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <style>
   :root{
-    --blue:#004AAD; --blue-dark:#003580; --blue-soft:#e8f0fb;
-    --green:#006341; --green-dark:#004d31; --green-light:#dcfce7;
+    --blue:#002776; --blue-dark:#001a52; --blue-soft:#e6ecf5;
+    --blue-assistec:#004AAD; --blue-assistec-dark:#003580;
+    --green:#009C3B; --green-dark:#007a2e; --green-light:#dcfce7;
     --red:#ce1126; --red-dark:#a30d1e;
-    --gold:#fbbf24;
+    --yellow:#FFDF00; --yellow-dark:#e0c200;
+    --gold:#FFDF00;
     --bg:#f1f5f9;
     --surface:#fff;
     --border:#e2e8f0;
@@ -42,8 +44,8 @@
     font-family:-apple-system,BlinkMacSystemFont,'Inter','Segoe UI',Roboto,sans-serif;
     background:var(--bg);
     background-image:
-      radial-gradient(ellipse at top left,rgba(0,74,173,.07),transparent 50%),
-      radial-gradient(ellipse at bottom right,rgba(0,99,65,.06),transparent 50%);
+      radial-gradient(ellipse at top left,rgba(0,156,59,.10),transparent 55%),
+      radial-gradient(ellipse at bottom right,rgba(255,223,0,.12),transparent 55%);
     background-attachment:fixed;
     min-height:100vh;
     color:var(--text);
@@ -56,21 +58,21 @@
   .hero{background:var(--surface);box-shadow:var(--shadow-md);position:relative}
   .hero-banner{padding:22px 24px 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#fff,#fafbfd)}
   .hero-banner img{max-height:78px;width:auto;max-width:340px;display:block}
-  .hero-accent{height:5px;background:linear-gradient(90deg,var(--blue) 0%,var(--green) 35%,var(--gold) 65%,var(--red) 100%)}
+  .hero-accent{height:5px;background:linear-gradient(90deg,var(--green) 0%,var(--yellow) 50%,var(--blue) 100%)}
   .hero-title{
-    background:linear-gradient(135deg,#005638 0%,#006341 40%,#a80e1f 100%);
+    background:linear-gradient(135deg,#007a2e 0%,var(--green) 45%,#00b347 100%);
     color:#fff;padding:28px 24px;text-align:center;position:relative;overflow:hidden;
   }
   .hero-title::before{
     content:'';position:absolute;inset:0;
     background:
-      radial-gradient(circle at 15% 30%,rgba(255,255,255,.12),transparent 40%),
-      radial-gradient(circle at 85% 70%,rgba(255,255,255,.08),transparent 45%);
+      radial-gradient(circle at 15% 30%,rgba(255,223,0,.18),transparent 45%),
+      radial-gradient(circle at 85% 70%,rgba(255,255,255,.10),transparent 50%);
     pointer-events:none;
   }
   .hero-title::after{
-    content:'';position:absolute;top:-40%;right:-10%;width:280px;height:280px;
-    background:radial-gradient(circle,rgba(251,191,36,.18),transparent 60%);
+    content:'';position:absolute;top:-40%;right:-10%;width:320px;height:320px;
+    background:radial-gradient(circle,rgba(255,223,0,.30),transparent 60%);
     pointer-events:none;
   }
   .hero-title h1{font-size:28px;font-weight:800;letter-spacing:-.6px;margin-bottom:6px;position:relative;text-shadow:0 1px 2px rgba(0,0,0,.15)}
@@ -107,7 +109,7 @@
 
   /* ============== PROGRESS BAR ============== */
   .progress-bar{height:10px;background:#f1f5f9;margin:0 20px 16px;border-radius:999px;overflow:hidden;position:relative;box-shadow:inset 0 1px 2px rgba(15,23,42,.06)}
-  .progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--gold),var(--red));transition:width .6s cubic-bezier(.22,1,.36,1);border-radius:999px;position:relative;overflow:hidden}
+  .progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--yellow),#00b347);transition:width .6s cubic-bezier(.22,1,.36,1);border-radius:999px;position:relative;overflow:hidden}
   .progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.35),transparent);animation:shimmer 2.5s infinite}
   @keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
 
@@ -190,7 +192,7 @@
   /* ============== FOOTER ============== */
   .credits{
     max-width:1100px;margin:0 auto 24px;
-    background:linear-gradient(135deg,var(--blue-dark),var(--blue));
+    background:linear-gradient(135deg,var(--blue-assistec-dark),var(--blue-assistec));
     color:#fff;padding:24px;text-align:center;
     display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;
     font-size:13px;letter-spacing:.3px;
@@ -214,8 +216,8 @@
   .install-bar.show{display:flex}
   .install-bar-text{flex:1;font-size:13px;color:#78350f;font-weight:500;min-width:0;line-height:1.4}
   .install-bar-text strong{font-weight:700}
-  .btn-install{background:linear-gradient(180deg,#0066d6,var(--blue));color:#fff;padding:10px 18px;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 2px 6px rgba(0,74,173,.35),inset 0 1px 0 rgba(255,255,255,.18);transition:all .15s}
-  .btn-install:hover{box-shadow:0 4px 12px rgba(0,74,173,.45),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn-install{background:linear-gradient(180deg,#00b347,var(--green));color:#fff;padding:10px 18px;border:none;border-radius:var(--radius-sm);font-size:13px;font-weight:700;cursor:pointer;white-space:nowrap;box-shadow:0 2px 6px rgba(0,156,59,.35),inset 0 1px 0 rgba(255,255,255,.18);transition:all .15s}
+  .btn-install:hover{box-shadow:0 4px 12px rgba(0,156,59,.45),inset 0 1px 0 rgba(255,255,255,.18)}
   .btn-install:active{transform:scale(.96)}
 
   /* ============== MODAL ============== */
@@ -224,7 +226,7 @@
   @keyframes fade-in{from{opacity:0}to{opacity:1}}
   .modal{background:#fff;border-radius:var(--radius-lg);max-width:460px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:var(--shadow-xl);animation:modal-pop .3s cubic-bezier(.22,1,.36,1)}
   @keyframes modal-pop{from{transform:scale(.92) translateY(20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
-  .modal-header{padding:20px 22px;background:linear-gradient(135deg,var(--blue-dark),var(--blue));color:#fff;border-radius:var(--radius-lg) var(--radius-lg) 0 0;display:flex;align-items:center;justify-content:space-between}
+  .modal-header{padding:20px 22px;background:linear-gradient(135deg,var(--green-dark),var(--green));color:#fff;border-radius:var(--radius-lg) var(--radius-lg) 0 0;display:flex;align-items:center;justify-content:space-between}
   .modal-header h2{font-size:17px;font-weight:700;letter-spacing:-.2px}
   .modal-close{background:rgba(255,255,255,.18);border:none;color:#fff;width:32px;height:32px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .15s}
   .modal-close:hover{background:rgba(255,255,255,.3)}
@@ -232,7 +234,7 @@
   .modal-body h3{font-size:14px;color:var(--text);margin-bottom:10px;font-weight:700}
   .modal-body ol{padding-left:0;list-style:none;counter-reset:step}
   .modal-body ol li{position:relative;padding:12px 12px 12px 46px;margin-bottom:8px;background:#f8fafc;border-radius:var(--radius-sm);font-size:13px;color:#374151;line-height:1.55;counter-increment:step;border:1px solid var(--border-soft)}
-  .modal-body ol li::before{content:counter(step);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:26px;height:26px;background:linear-gradient(135deg,var(--blue),var(--blue-dark));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;box-shadow:0 2px 4px rgba(0,74,173,.3)}
+  .modal-body ol li::before{content:counter(step);position:absolute;left:12px;top:50%;transform:translateY(-50%);width:26px;height:26px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px;box-shadow:0 2px 4px rgba(0,156,59,.3)}
   .icon-box{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:#1f2937;color:#fff;border-radius:6px;font-size:14px;margin:0 3px;vertical-align:middle;font-weight:700}
   .modal-tip{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1e40af;padding:11px 13px;border-radius:var(--radius-sm);font-size:12px;margin-top:14px;line-height:1.55;border:1px solid #93c5fd}
 
@@ -267,7 +269,7 @@
   </div>
   <div class="hero-accent"></div>
   <div class="hero-title">
-    <h1>⚽ Álbum Panini — Copa do Mundo FIFA 2026™</h1>
+    <h1>🇧🇷 ⚽ Álbum Panini — Copa do Mundo FIFA 2026™</h1>
     <p><strong>980</strong> figurinhas • <strong>48</strong> seleções • <strong>68</strong> especiais (foil ★)</p>
   </div>
 </header>
