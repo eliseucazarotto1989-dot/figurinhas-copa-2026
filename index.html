@@ -79,6 +79,44 @@
   .hero-title p{font-size:14px;opacity:.94;font-weight:500;position:relative;letter-spacing:.2px}
   .hero-title p strong{font-weight:700}
 
+  /* ============== FAIXA PROMO LOJA ============== */
+  .store-promo{
+    max-width:1100px;margin:16px auto 0;
+    background:linear-gradient(135deg,#003580 0%,#0050b3 50%,#0066d6 100%);
+    color:#fff;padding:18px 22px;
+    border-radius:var(--radius-md);
+    display:flex;align-items:center;gap:14px;
+    position:relative;overflow:hidden;
+    box-shadow:var(--shadow-md);
+    border:2px solid var(--yellow);
+  }
+  .store-promo::before{
+    content:'';position:absolute;top:-60%;right:-15%;width:280px;height:280px;
+    background:radial-gradient(circle,rgba(255,223,0,.20),transparent 60%);
+    pointer-events:none;
+  }
+  .store-promo::after{
+    content:'';position:absolute;bottom:-40%;left:-10%;width:200px;height:200px;
+    background:radial-gradient(circle,rgba(255,255,255,.10),transparent 60%);
+    pointer-events:none;
+  }
+  .store-icon{
+    font-size:42px;flex-shrink:0;
+    filter:drop-shadow(0 2px 4px rgba(0,0,0,.3));
+    position:relative;
+  }
+  .store-text{flex:1;display:flex;flex-direction:column;gap:2px;position:relative;line-height:1.25}
+  .store-text .store-eyebrow{font-size:12px;opacity:.92;letter-spacing:.6px;text-transform:uppercase;font-weight:600;color:var(--yellow)}
+  .store-text strong{font-size:18px;font-weight:800;letter-spacing:.5px;text-shadow:0 1px 2px rgba(0,0,0,.2)}
+  .store-text .store-sub{font-size:12.5px;opacity:.92;font-weight:500;margin-top:2px}
+  @media (max-width:768px){
+    .store-promo{margin:12px 12px 0;padding:14px 16px;gap:10px}
+    .store-icon{font-size:32px}
+    .store-text strong{font-size:15px}
+    .store-text .store-eyebrow{font-size:10.5px}
+    .store-text .store-sub{font-size:11.5px}
+  }
+
   /* ============== CONTAINER PRINCIPAL ============== */
   .content{
     max-width:1100px;margin:24px auto;background:var(--surface);
@@ -279,6 +317,15 @@
     <p><strong>980</strong> figurinhas • <strong>48</strong> seleções • <strong>68</strong> especiais (foil ★)</p>
   </div>
 </header>
+
+<div class="store-promo">
+  <span class="store-icon">🛒</span>
+  <div class="store-text">
+    <span class="store-eyebrow">Onde comprar?</span>
+    <strong>SUPER CAZAROTTO • REDEFORT</strong>
+    <span class="store-sub">Garanta suas figurinhas e complete o álbum 🦛⚽</span>
+  </div>
+</div>
 
 <main class="content">
   <div id="loading" class="loading">
