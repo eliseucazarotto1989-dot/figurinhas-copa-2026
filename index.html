@@ -20,9 +20,12 @@
   *{box-sizing:border-box;margin:0;padding:0}
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:linear-gradient(135deg,#006341 0%,#00843d 50%,#ce1126 100%);min-height:100vh;padding:12px;color:#1a1a1a}
   .container{max-width:1100px;margin:0 auto;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-  header{background:linear-gradient(90deg,#006341,#ce1126);color:#fff;padding:20px 24px;text-align:center}
+  header{background:linear-gradient(90deg,#006341,#ce1126);color:#fff;padding:20px 24px;text-align:center;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+  header .header-logo{height:54px;width:54px;border-radius:10px;object-fit:contain;border:2px solid rgba(255,255,255,.4);background:#004AAD;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+  header .header-text{flex:1;min-width:0}
   header h1{font-size:24px;margin-bottom:4px;letter-spacing:-.5px}
   header p{opacity:.9;font-size:13px}
+  @media (max-width:480px){header h1{font-size:20px}header .header-logo{height:46px;width:46px}}
   .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:14px;background:#f7f9fa;border-bottom:1px solid #e5e7eb}
   .stat{background:#fff;padding:10px;border-radius:10px;text-align:center;border:1px solid #e5e7eb}
   .stat .label{font-size:10px;color:#6b7280;text-transform:uppercase;letter-spacing:.5px}
@@ -85,8 +88,9 @@
   @keyframes spin{to{transform:rotate(360deg)}}
   .toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#1f2937;color:#fff;padding:12px 20px;border-radius:8px;box-shadow:0 10px 25px rgba(0,0,0,.3);opacity:0;pointer-events:none;transition:opacity .3s,transform .3s;font-size:13px;z-index:1000;max-width:90%;text-align:center}
   .toast.show{opacity:1;transform:translateX(-50%) translateY(-10px)}
-  .credits{padding:14px;text-align:center;background:linear-gradient(90deg,#006341,#ce1126);color:#fff;font-size:12px;letter-spacing:.3px;border-top:2px solid rgba(255,255,255,.2)}
+  .credits{padding:14px;text-align:center;background:linear-gradient(90deg,#006341,#ce1126);color:#fff;font-size:12px;letter-spacing:.3px;border-top:2px solid rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap}
   .credits strong{font-weight:700;letter-spacing:.5px}
+  .credits-logo{height:36px;width:36px;border-radius:7px;object-fit:contain;border:2px solid rgba(255,255,255,.4);background:#004AAD;flex-shrink:0}
 
   /* Botão instalar app */
   .install-bar{display:none;padding:10px 14px;background:linear-gradient(90deg,#fef3c7,#fde68a);border-bottom:1px solid #fcd34d;align-items:center;gap:10px;flex-wrap:wrap}
@@ -125,8 +129,11 @@
 <body>
 <div class="container">
   <header>
-    <h1>⚽ Álbum Panini — Copa do Mundo FIFA 2026™</h1>
-    <p>980 figurinhas • 48 seleções • 68 especiais (foil ★)</p>
+    <img src="assistec-logo.png" alt="Assistec Informática" class="header-logo">
+    <div class="header-text">
+      <h1>⚽ Álbum Panini — Copa do Mundo FIFA 2026™</h1>
+      <p>980 figurinhas • 48 seleções • 68 especiais (foil ★)</p>
+    </div>
   </header>
 
   <div id="loading" class="loading">
@@ -173,7 +180,10 @@
 
     <div class="tab-content" id="content"></div>
   </div>
-  <div class="credits">⚽ APP Produzido por <strong>Eliseu Cazarotto</strong></div>
+  <div class="credits">
+    <img src="assistec-logo.png" alt="Assistec Informática" class="credits-logo">
+    <span>⚽ APP Produzido por <strong>ASSISTEC INFORMÁTICA</strong></span>
+  </div>
 </div>
 
 <!-- Modal de instruções de instalação (iOS / fallback) -->
