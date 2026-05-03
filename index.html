@@ -287,8 +287,8 @@
     </div>
     <div class="stats">
       <div class="stat"><div class="label">Total</div><div class="value">980</div></div>
-      <div class="stat have"><div class="label">Tenho</div><div class="value" id="stat-have">0</div></div>
       <div class="stat miss"><div class="label">Faltam</div><div class="value" id="stat-miss">980</div></div>
+      <div class="stat have"><div class="label">Coladas</div><div class="value" id="stat-have">0</div></div>
       <div class="stat pct"><div class="label">Completo</div><div class="value" id="stat-pct">0%</div></div>
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
@@ -302,14 +302,14 @@
       <button class="btn btn-secondary" onclick="resetAll()">🗑️ Limpar</button>
       <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(event)">
     </div>
-    <div class="help">💡 Digite os códigos das figurinhas (ex: <strong>BRA9</strong>, <strong>FWC5</strong>) ou intervalos (<strong>BRA2-BRA10</strong>). Clique em uma figurinha vermelha para marcar como "tenho". <strong>2 cliques para remover</strong> uma figurinha verde. 🔒 <strong>Salvamento automático</strong> — clique em "Exportar" de vez em quando para fazer backup.</div>
+    <div class="help">💡 Digite os códigos das figurinhas (ex: <strong>BRA9</strong>, <strong>FWC5</strong>) ou intervalos (<strong>BRA2-BRA10</strong>). Clique em uma figurinha vermelha para marcar como "colada". <strong>2 cliques para remover</strong> uma figurinha verde. 🔒 <strong>Salvamento automático</strong> — clique em "Exportar" de vez em quando para fazer backup.</div>
 
     <div class="tabs">
-      <div class="tab active" data-tab="have" onclick="switchTab('have')">
-        ✅ Tenho <span class="count" id="count-have">0</span>
-      </div>
       <div class="tab" data-tab="miss" onclick="switchTab('miss')">
         ❌ Faltantes <span class="count" id="count-miss">980</span>
+      </div>
+      <div class="tab active" data-tab="have" onclick="switchTab('have')">
+        ✅ Coladas <span class="count" id="count-have">0</span>
       </div>
     </div>
 
