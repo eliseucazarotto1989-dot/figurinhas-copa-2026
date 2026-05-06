@@ -319,6 +319,14 @@
   .icon-box{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;background:#1f2937;color:#fff;border-radius:6px;font-size:14px;margin:0 3px;vertical-align:middle;font-weight:700}
   .modal-tip{background:linear-gradient(135deg,#dbeafe,#bfdbfe);color:#1e40af;padding:11px 13px;border-radius:var(--radius-sm);font-size:12px;margin-top:14px;line-height:1.55;border:1px solid #93c5fd}
 
+  /* ============== QUICK STATS BAR ============== */
+  .quick-stats{display:flex;justify-content:center;gap:12px;padding:10px 16px;background:linear-gradient(135deg,#f0f9ff,#e0f2fe);border-bottom:1px solid #bae6fd}
+  .qs-item{font-size:13px;color:#1e3a5f;font-weight:500;display:flex;align-items:center;gap:4px}
+  .qs-item strong{font-size:15px;font-weight:800}
+  .qs-miss strong{color:#dc2626}
+  .qs-have strong{color:#16a34a}
+  .qs-pct strong{color:#2563eb}
+
   /* ============== RESPONSIVE ============== */
   @media (max-width:600px){
     .stats{grid-template-columns:repeat(2,1fr);padding:14px;gap:8px}
@@ -380,6 +388,12 @@
     <span class="hours-day">Sábado</span>
     <span class="hours-time">07:30 — 12:00 · 14:00 — 19:00</span>
   </div>
+</div>
+
+<div class="quick-stats" id="quick-stats">
+  <div class="qs-item qs-miss">❌ Faltam <strong id="qs-miss">994</strong></div>
+  <div class="qs-item qs-have">✅ Coladas <strong id="qs-have">0</strong></div>
+  <div class="qs-item qs-pct">📊 <strong id="qs-pct">0%</strong></div>
 </div>
 
 <main class="content">
@@ -909,6 +923,9 @@ function render() {
   document.getElementById('progress').style.width = pct + '%';
   document.getElementById('count-have').textContent = have;
   document.getElementById('count-miss').textContent = miss;
+  document.getElementById('qs-have').textContent = have;
+  document.getElementById('qs-miss').textContent = miss;
+  document.getElementById('qs-pct').textContent = pct + '%';
 
   const search = document.getElementById('search-input').value.trim().toLowerCase();
   const content = document.getElementById('content');
