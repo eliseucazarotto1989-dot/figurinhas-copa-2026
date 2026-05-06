@@ -428,15 +428,6 @@
     </div>
     <div class="help">👆 <strong>Toque na figurinha para marcar como colada.</strong> Toque 2× numa verde para remover. Salvamento automático.</div>
 
-    <div class="tabs">
-      <div class="tab active" data-tab="miss" onclick="switchTab('miss')">
-        ❌ Faltantes <span class="count" id="count-miss">994</span>
-      </div>
-      <div class="tab" data-tab="have" onclick="switchTab('have')">
-        ✅ Coladas <span class="count" id="count-have">0</span>
-      </div>
-    </div>
-
     <div class="search-wrap">
       <input type="text" id="search-input" placeholder="🔍 Buscar por código, jogador ou seleção..." oninput="render()">
     </div>
@@ -926,8 +917,6 @@ function render() {
   document.getElementById('stat-miss').textContent = miss;
   document.getElementById('stat-pct').textContent = pct + '%';
   document.getElementById('progress').style.width = pct + '%';
-  document.getElementById('count-have').textContent = have;
-  document.getElementById('count-miss').textContent = miss;
   document.getElementById('qs-have').textContent = have;
   document.getElementById('qs-miss').textContent = miss;
   document.getElementById('qs-pct').textContent = pct + '%';
@@ -939,9 +928,6 @@ function render() {
 
   SECTIONS.forEach(sec => {
     const items = sec.items.filter(it => {
-      const isHave = haveSet.has(it.code);
-      if (currentTab === 'have' && !isHave) return false;
-      if (currentTab === 'miss' && isHave) return false;
       if (search) {
         const hay = (it.code + ' ' + it.name + ' ' + sec.title).toLowerCase();
         if (!hay.includes(search)) return false;
@@ -982,12 +968,8 @@ function render() {
     html += `</div></div></div>`;
   });
 
-  if (totalShown === 0) {
-    let msg;
-    if (search) msg = `<span class="emoji">🔍</span>Nada encontrado para "${search}"`;
-    else if (currentTab === 'have') msg = `<span class="emoji">📭</span>Você ainda não marcou nenhuma figurinha.<br>Use o campo acima para começar!`;
-    else msg = `<span class="emoji">🎉</span>Parabéns! Álbum completo!`;
-    html = `<div class="empty">${msg}</div>`;
+  if (totalShown === 0 && search) {
+    html = `<div class="empty"><span class="emoji">🔍</span>Nada encontrado para "${search}"</div>`;
   }
 
   content.innerHTML = html;
