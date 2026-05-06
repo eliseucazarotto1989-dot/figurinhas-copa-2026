@@ -597,7 +597,7 @@ const TOTAL = ALL_CODES.length;
 const KEY = 'panini2026:have-v2';
 let haveSet = new Set();
 let currentTab = 'miss';
-let expandedSections = new Set();
+let expandedSections = new Set([SECTIONS[0].id]);
 
 // ============== INSTALAR COMO APP (PWA) ==============
 const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
@@ -955,8 +955,7 @@ function render() {
     const secHave = sec.items.filter(i => haveSet.has(i.code)).length;
     const secTotal = sec.items.length;
     const isComplete = secHave === secTotal;
-    const isFirst = totalShown === items.length;
-    const isExpanded = expandedSections.has(sec.id) || !!search || isFirst;
+    const isExpanded = expandedSections.has(sec.id) || !!search;
 
     html += `<div class="section ${isExpanded?'expanded':''}">`;
     html += `<div class="section-header" onclick="toggleSection('${sec.id}')">`;
