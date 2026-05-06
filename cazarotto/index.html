@@ -241,6 +241,9 @@
   /* ============== STICKERS ============== */
   .sticker-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
   .sticker{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:all .15s ease;font-size:13px;border:2px solid transparent;user-select:none;overflow:hidden;min-width:0}
+  .st-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;line-height:1}
+  .sticker.miss .st-icon{background:#fee2e2;color:#dc2626;border:2px solid #fca5a5}
+  .sticker.have .st-icon{background:rgba(255,255,255,.25);color:#fff;border:2px solid rgba(255,255,255,.4)}
   .sticker .code{font-weight:800;font-size:12px;min-width:48px;flex-shrink:0;font-family:'SF Mono','Cascadia Code','Courier New',monospace;letter-spacing:-.3px;background:rgba(0,0,0,.08);padding:3px 6px;border-radius:5px;text-align:center}
   .sticker .nm{flex:1;min-width:0;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
   .sticker.have{background:linear-gradient(135deg,#15803d,#166534);color:#fff;border-color:#22c55e;box-shadow:0 2px 6px rgba(0,99,65,.35),inset 0 1px 0 rgba(255,255,255,.12)}
@@ -423,13 +426,13 @@
       <button class="btn btn-secondary" onclick="resetAll()">🗑️ Limpar</button>
       <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(event)">
     </div>
-    <div class="help">💡 Clique em uma figurinha <strong>vermelha</strong> para marcar como "colada". <strong>2 cliques</strong> em uma figurinha verde para remover. 🔒 <strong>Salvamento automático</strong> — clique em "Exportar" de vez em quando para fazer backup.</div>
+    <div class="help">👆 <strong>Toque na figurinha para marcar como colada.</strong> Toque 2× numa verde para remover. Salvamento automático.</div>
 
     <div class="tabs">
-      <div class="tab" data-tab="miss" onclick="switchTab('miss')">
+      <div class="tab active" data-tab="miss" onclick="switchTab('miss')">
         ❌ Faltantes <span class="count" id="count-miss">994</span>
       </div>
-      <div class="tab active" data-tab="have" onclick="switchTab('have')">
+      <div class="tab" data-tab="have" onclick="switchTab('have')">
         ✅ Coladas <span class="count" id="count-have">0</span>
       </div>
     </div>
@@ -593,7 +596,7 @@ const TOTAL = ALL_CODES.length;
 // ============== ESTADO ==============
 const KEY = 'panini2026:have-v2';
 let haveSet = new Set();
-let currentTab = 'have';
+let currentTab = 'miss';
 let expandedSections = new Set();
 
 // ============== INSTALAR COMO APP (PWA) ==============
@@ -952,7 +955,8 @@ function render() {
     const secHave = sec.items.filter(i => haveSet.has(i.code)).length;
     const secTotal = sec.items.length;
     const isComplete = secHave === secTotal;
-    const isExpanded = expandedSections.has(sec.id) || !!search;
+    const isFirst = totalShown === items.length;
+    const isExpanded = expandedSections.has(sec.id) || !!search || isFirst;
 
     html += `<div class="section ${isExpanded?'expanded':''}">`;
     html += `<div class="section-header" onclick="toggleSection('${sec.id}')">`;
@@ -964,11 +968,14 @@ function render() {
     html += `<div class="section-body">`;
     html += `<div class="sticker-list">`;
     items.forEach(it => {
-      const cls = haveSet.has(it.code) ? 'have' : 'miss';
+      const isH = haveSet.has(it.code);
+      const cls = isH ? 'have' : 'miss';
+      const icon = isH ? '✓' : '+';
       const sp = it.special ? ' special' : '';
       const pending = pendingRemove === it.code ? ' confirm-remove' : '';
       const safeName = it.name.replace(/"/g,'&quot;').replace(/</g,'&lt;');
       html += `<div class="sticker ${cls}${sp}${pending}" onclick="toggleSticker('${it.code}')" title="${it.code} — ${safeName}">`;
+      html += `<span class="st-icon">${icon}</span>`;
       html += `<span class="code">${it.code}</span>`;
       html += `<span class="nm">${safeName}</span>`;
       html += `</div>`;
