@@ -359,7 +359,7 @@
       <button class="btn btn-secondary" onclick="resetAll()">🗑️ Limpar</button>
       <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(event)">
     </div>
-    <div class="help">👆 <strong>Toque na figurinha para marcar como colada.</strong> Toque 2× numa verde para remover. Salvamento automático.</div>
+    <div class="help">👆 <strong>Toque na figurinha para marcar/desmarcar.</strong> Vermelho = faltante, Verde = colada. Salvamento automático.</div>
 
     <div class="search-wrap">
       <input type="text" id="search-input" placeholder="🔍 Buscar por código, jogador ou seleção..." oninput="render()">
@@ -790,47 +790,14 @@ async function resetAll() {
   render();
   toast('Tudo limpo!');
 }
-// Confirmação de remoção: 2 cliques (com timeout de 3s)
-let pendingRemove = null;     // código aguardando confirmação
-let pendingRemoveTimer = null;
-
-function clearPending() {
-  pendingRemove = null;
-  if (pendingRemoveTimer) { clearTimeout(pendingRemoveTimer); pendingRemoveTimer = null; }
-}
-
 async function toggleSticker(code) {
-  const isHave = haveSet.has(code);
-
-  // Marcar como tenho (clique único)
-  if (!isHave) {
-    if (pendingRemove) clearPending(); // cancela qualquer remoção pendente
-    haveSet.add(code);
-    await saveData();
-    render();
-    return;
-  }
-
-  // Remover (precisa de 2 cliques)
-  if (pendingRemove === code) {
-    // Segundo clique → confirma remoção
+  if (haveSet.has(code)) {
     haveSet.delete(code);
-    clearPending();
-    await saveData();
-    render();
-    toast(`🗑️ ${code} removida`);
   } else {
-    // Primeiro clique → pede confirmação
-    if (pendingRemove) clearPending();
-    pendingRemove = code;
-    pendingRemoveTimer = setTimeout(() => {
-      pendingRemove = null;
-      pendingRemoveTimer = null;
-      render();
-    }, 3000);
-    render();
-    toast('Clique de novo para remover');
+    haveSet.add(code);
   }
+  await saveData();
+  render();
 }
 function toggleSection(id) {
   if (expandedSections.has(id)) expandedSections.delete(id);
@@ -893,9 +860,9 @@ function render() {
       const cls = isH ? 'have' : 'miss';
       const icon = isH ? '✓' : '+';
       const sp = it.special ? ' special' : '';
-      const pending = pendingRemove === it.code ? ' confirm-remove' : '';
+
       const safeName = it.name.replace(/"/g,'&quot;').replace(/</g,'&lt;');
-      html += `<div class="sticker ${cls}${sp}${pending}" onclick="toggleSticker('${it.code}')" title="${it.code} — ${safeName}">`;
+      html += `<div class="sticker ${cls}${sp}" onclick="toggleSticker('${it.code}')" title="${it.code} — ${safeName}">`;
       html += `<span class="st-icon">${icon}</span>`;
       html += `<span class="code">${it.code}</span>`;
       html += `<span class="nm">${safeName}</span>`;
