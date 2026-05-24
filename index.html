@@ -202,19 +202,35 @@
   .section.expanded .section-body{display:block}
 
   /* ============== STICKERS ============== */
-  .sticker-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
-  .sticker{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;cursor:pointer;transition:all .15s ease;font-size:13px;border:2px solid transparent;user-select:none;overflow:hidden;min-width:0}
-  .st-icon{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0;line-height:1}
+  .sticker-list{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .sticker{display:flex;align-items:center;gap:6px;padding:8px 8px;border-radius:8px;cursor:pointer;transition:all .15s ease;font-size:13px;border:2px solid transparent;user-select:none;overflow:hidden;min-width:0}
+  .st-icon{width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex-shrink:0;line-height:1}
   .sticker.miss .st-icon{background:#fee2e2;color:#dc2626;border:2px solid #fca5a5}
   .sticker.have .st-icon{background:rgba(255,255,255,.25);color:#fff;border:2px solid rgba(255,255,255,.4)}
-  .sticker .code{font-weight:800;font-size:12px;min-width:48px;flex-shrink:0;font-family:'SF Mono','Cascadia Code','Courier New',monospace;letter-spacing:-.3px;background:rgba(0,0,0,.08);padding:3px 6px;border-radius:5px;text-align:center}
-  .sticker .nm{flex:1;min-width:0;line-height:1.3;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:600}
+  .sticker .code{font-weight:800;font-size:12px;flex-shrink:0;font-family:'SF Mono','Cascadia Code','Courier New',monospace;letter-spacing:-.3px;text-align:center}
+  .sticker .nm{display:none}
   .sticker.have{background:linear-gradient(135deg,#15803d,#166534);color:#fff;border-color:#22c55e;box-shadow:0 2px 6px rgba(0,99,65,.35),inset 0 1px 0 rgba(255,255,255,.12)}
   .sticker.have .code{background:rgba(255,255,255,.2);color:#fff}
   .sticker.have:hover{transform:translateX(3px);box-shadow:0 4px 12px rgba(0,99,65,.45),inset 0 1px 0 rgba(255,255,255,.12)}
   .sticker.miss{background:#fff;color:#991b1b;border-color:#fca5a5;box-shadow:0 1px 3px rgba(220,38,38,.1)}
   .sticker.miss .code{background:rgba(220,38,38,.08);color:#b91c1c}
   .sticker.miss:hover{background:#fef2f2;transform:translateX(3px);border-color:#f87171;box-shadow:0 2px 8px rgba(220,38,38,.15)}
+
+  /* ============== REPETIDAS ============== */
+  .dupe-controls{display:flex;align-items:center;gap:2px;margin-left:auto;flex-shrink:0}
+  .dupe-btn{width:22px;height:22px;border-radius:50%;border:none;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .12s;padding:0}
+  .dupe-btn.dupe-minus{background:rgba(255,255,255,.25);color:#fff}
+  .dupe-btn.dupe-minus:hover{background:rgba(255,255,255,.4)}
+  .dupe-btn.dupe-plus{background:rgba(255,255,255,.25);color:#fff}
+  .dupe-btn.dupe-plus:hover{background:rgba(255,255,255,.4)}
+  .sticker.miss .dupe-btn.dupe-plus{background:rgba(220,38,38,.1);color:#b91c1c}
+  .sticker.miss .dupe-btn.dupe-plus:hover{background:rgba(220,38,38,.2)}
+  .dupe-badge{background:var(--yellow);color:#78350f;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;min-width:22px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.2);line-height:1.4}
+  .sticker.miss .dupe-badge{background:#fecaca;color:#991b1b}
+
+  /* Botão compartilhar repetidas */
+  .btn-share{background:linear-gradient(180deg,#2cdf6e,#25D366);color:#fff;box-shadow:0 1px 2px rgba(37,211,102,.3),inset 0 1px 0 rgba(255,255,255,.18)}
+  .btn-share:hover{background:linear-gradient(180deg,#33e677,#1ebc5c);box-shadow:0 4px 10px rgba(37,211,102,.35)}
   .sticker.special{position:relative}
   .sticker.special::after{content:'★';position:absolute;top:3px;right:5px;font-size:9px;color:var(--gold);text-shadow:0 0 3px rgba(251,191,36,.5)}
   .sticker.have.special::after{color:#fde68a}
@@ -305,9 +321,9 @@
     .search-wrap{padding:12px 14px}
     .section-header{padding:12px 14px}
     .section-body{padding:12px 14px 16px}
-    .sticker-list{grid-template-columns:1fr;gap:6px}
-    .sticker{padding:12px 14px;gap:10px;font-size:13px}
-    .sticker .code{min-width:48px;font-size:12px}
+    .sticker-list{grid-template-columns:repeat(3,1fr);gap:4px}
+    .sticker{padding:6px 6px;gap:4px;font-size:12px}
+    .sticker .code{font-size:11px}
     .credits{padding:18px 16px;font-size:12px}
     .credits-logo{height:30px}
   }
@@ -350,6 +366,7 @@
       <div class="stat miss"><div class="label">Faltam</div><div class="value" id="stat-miss">994</div></div>
       <div class="stat have"><div class="label">Coladas</div><div class="value" id="stat-have">0</div></div>
       <div class="stat pct"><div class="label">Completo</div><div class="value" id="stat-pct">0%</div></div>
+      <div class="stat" style="grid-column:1/-1"><div class="label">🔁 Repetidas</div><div class="value" style="color:var(--yellow-dark)" id="stat-dupes">0</div></div>
     </div>
     <div class="progress-bar"><div class="progress-fill" id="progress" style="width:0%"></div></div>
 
@@ -357,9 +374,10 @@
       <button class="btn btn-secondary" onclick="exportData()">💾 Exportar</button>
       <button class="btn btn-secondary" onclick="document.getElementById('import-file').click()">📂 Importar</button>
       <button class="btn btn-secondary" onclick="resetAll()">🗑️ Limpar</button>
+      <button class="btn btn-share" onclick="shareDupes()">📤 Compartilhar Repetidas</button>
       <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(event)">
     </div>
-    <div class="help">👆 <strong>Toque na figurinha para marcar/desmarcar.</strong> Vermelho = faltante, Verde = colada. Salvamento automático.</div>
+    <div class="help">👆 <strong>Toque na figurinha para marcar/desmarcar.</strong> Use os botões <strong>+</strong> e <strong>−</strong> para controlar as repetidas. Vermelho = faltante, Verde = colada, 🟡 = repetida.</div>
 
     <div class="search-wrap">
       <input type="text" id="search-input" placeholder="🔍 Buscar por código, jogador ou seleção..." oninput="render()">
@@ -525,7 +543,9 @@ const TOTAL = ALL_CODES.length;
 
 // ============== ESTADO ==============
 const KEY = 'panini2026:have-v2';
+const KEY_DUPES = 'panini2026:dupes-v1';
 let haveSet = new Set();
+let dupesMap = new Map(); // code → quantidade de repetidas
 let currentTab = 'miss';
 let expandedSections = new Set([SECTIONS[0].id]);
 
@@ -638,6 +658,7 @@ function maybeShowInstallBarFallback() {
 
 // ============== STORAGE (dupla camada: window.storage + localStorage) ==============
 const LS_KEY = 'panini2026_have_v2';
+const LS_KEY_DUPES = 'panini2026_dupes_v1';
 
 async function loadData() {
   let loaded = false;
@@ -649,6 +670,10 @@ async function loadData() {
         haveSet = new Set(JSON.parse(r.value));
         loaded = true;
       }
+      const rd = await window.storage.get(KEY_DUPES);
+      if (rd && rd.value) {
+        dupesMap = new Map(JSON.parse(rd.value));
+      }
     }
   } catch (e) {}
   // 2) Fallback: localStorage do navegador
@@ -658,19 +683,26 @@ async function loadData() {
       if (raw) haveSet = new Set(JSON.parse(raw));
     } catch (e) {}
   } else {
-    // Sincroniza para o localStorage também
     try { localStorage.setItem(LS_KEY, JSON.stringify([...haveSet])); } catch (e) {}
   }
+  // Carregar repetidas do localStorage
+  try {
+    const rawD = localStorage.getItem(LS_KEY_DUPES);
+    if (rawD && dupesMap.size === 0) dupesMap = new Map(JSON.parse(rawD));
+  } catch (e) {}
 }
 
 async function saveData() {
   const data = JSON.stringify([...haveSet]);
-  // Salva sempre no localStorage (rápido e local)
+  const dataDupes = JSON.stringify([...dupesMap]);
+  // Salva sempre no localStorage
   try { localStorage.setItem(LS_KEY, data); } catch (e) {}
-  // Salva também no window.storage se disponível (sincronização)
+  try { localStorage.setItem(LS_KEY_DUPES, dataDupes); } catch (e) {}
+  // Salva também no window.storage se disponível
   try {
     if (typeof window.storage !== 'undefined' && window.storage.set) {
       await window.storage.set(KEY, data);
+      await window.storage.set(KEY_DUPES, dataDupes);
     }
   } catch (e) {}
 }
@@ -682,7 +714,8 @@ function exportData() {
     version: 2,
     exportedAt: new Date().toISOString(),
     total: TOTAL,
-    have: [...haveSet].sort()
+    have: [...haveSet].sort(),
+    dupes: Object.fromEntries(dupesMap)
   };
   const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
   const url = URL.createObjectURL(blob);
@@ -708,6 +741,12 @@ function importData(event) {
       const codeSet = new Set(ALL_CODES);
       const valid = data.have.filter(c => codeSet.has(c));
       if (valid.length === 0) { toast('⚠️ Nenhuma figurinha válida no arquivo'); return; }
+      // Importar repetidas se existirem
+      if (data.dupes && typeof data.dupes === 'object') {
+        Object.entries(data.dupes).forEach(([code, qty]) => {
+          if (codeSet.has(code) && qty > 0) dupesMap.set(code, qty);
+        });
+      }
       if (haveSet.size > 0) {
         if (!confirm(`Você já tem ${haveSet.size} figurinhas marcadas.\n\nO arquivo tem ${valid.length} figurinhas.\n\nDeseja SUBSTITUIR pelas do arquivo? (Cancelar = mesclar/somar)`)) {
           // Mesclar
@@ -784,8 +823,9 @@ async function removeStickers() {
   toast(`🗑️ ${removed} figurinha(s) desmarcada(s)`);
 }
 async function resetAll() {
-  if (!confirm('Apagar TODAS as figurinhas marcadas? Essa ação não pode ser desfeita.')) return;
+  if (!confirm('Apagar TODAS as figurinhas marcadas e repetidas? Essa ação não pode ser desfeita.')) return;
   haveSet.clear();
+  dupesMap.clear();
   await saveData();
   render();
   toast('Tudo limpo!');
@@ -803,6 +843,63 @@ function toggleSection(id) {
   if (expandedSections.has(id)) expandedSections.delete(id);
   else expandedSections.add(id);
   render();
+}
+async function addDupe(code, e) {
+  e.stopPropagation();
+  dupesMap.set(code, (dupesMap.get(code) || 0) + 1);
+  await saveData();
+  render();
+}
+async function removeDupe(code, e) {
+  e.stopPropagation();
+  const cur = dupesMap.get(code) || 0;
+  if (cur <= 1) dupesMap.delete(code);
+  else dupesMap.set(code, cur - 1);
+  await saveData();
+  render();
+}
+function getTotalDupes() {
+  let total = 0;
+  dupesMap.forEach(v => total += v);
+  return total;
+}
+async function shareDupes() {
+  const entries = [];
+  SECTIONS.forEach(sec => {
+    sec.items.forEach(it => {
+      const qty = dupesMap.get(it.code) || 0;
+      if (qty > 0) entries.push({code: it.code, name: it.name, qty, section: sec.title});
+    });
+  });
+  if (entries.length === 0) { toast('Nenhuma figurinha repetida marcada'); return; }
+  let text = '⚽ FIGURINHAS REPETIDAS — Copa 2026\n';
+  text += '━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
+  let lastSec = '';
+  entries.forEach(e => {
+    if (e.section !== lastSec) {
+      text += `\n📌 ${e.section}\n`;
+      lastSec = e.section;
+    }
+    text += `  ${e.code} — ${e.name} (${e.qty}x)\n`;
+  });
+  text += `\n━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+  text += `Total: ${entries.reduce((s,e)=>s+e.qty,0)} figurinhas repetidas\n`;
+  text += `🔗 Gerado pelo App Álbum Panini 2026`;
+  // Tenta Web Share API primeiro
+  if (navigator.share) {
+    try {
+      await navigator.share({title:'Figurinhas Repetidas — Copa 2026', text});
+      return;
+    } catch (e) { /* usuário cancelou ou erro */ }
+  }
+  // Fallback: copiar para área de transferência
+  try {
+    await navigator.clipboard.writeText(text);
+    toast('📋 Lista copiada! Cole no WhatsApp ou onde quiser');
+  } catch (e) {
+    // Fallback final: prompt
+    prompt('Copie a lista abaixo:', text);
+  }
 }
 function switchTab(t) {
   currentTab = t;
@@ -823,6 +920,7 @@ function render() {
   document.getElementById('stat-miss').textContent = miss;
   document.getElementById('stat-pct').textContent = pct + '%';
   document.getElementById('progress').style.width = pct + '%';
+  document.getElementById('stat-dupes').textContent = getTotalDupes();
 
   const search = document.getElementById('search-input').value.trim().toLowerCase();
   const content = document.getElementById('content');
@@ -860,12 +958,21 @@ function render() {
       const cls = isH ? 'have' : 'miss';
       const icon = isH ? '✓' : '+';
       const sp = it.special ? ' special' : '';
+      const dupeQty = dupesMap.get(it.code) || 0;
 
       const safeName = it.name.replace(/"/g,'&quot;').replace(/</g,'&lt;');
       html += `<div class="sticker ${cls}${sp}" onclick="toggleSticker('${it.code}')" title="${it.code} — ${safeName}">`;
       html += `<span class="st-icon">${icon}</span>`;
       html += `<span class="code">${it.code}</span>`;
       html += `<span class="nm">${safeName}</span>`;
+      // Controles de repetidas
+      html += `<span class="dupe-controls">`;
+      if (dupeQty > 0) {
+        html += `<button class="dupe-btn dupe-minus" onclick="removeDupe('${it.code}',event)" title="Remover repetida">−</button>`;
+        html += `<span class="dupe-badge">${dupeQty}x</span>`;
+      }
+      html += `<button class="dupe-btn dupe-plus" onclick="addDupe('${it.code}',event)" title="Adicionar repetida">+</button>`;
+      html += `</span>`;
       html += `</div>`;
     });
     html += `</div></div></div>`;
