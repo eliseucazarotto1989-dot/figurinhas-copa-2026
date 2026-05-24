@@ -217,16 +217,8 @@
   .sticker.miss:hover{background:#fef2f2;transform:translateX(3px);border-color:#f87171;box-shadow:0 2px 8px rgba(220,38,38,.15)}
 
   /* ============== REPETIDAS ============== */
-  .dupe-controls{display:flex;align-items:center;gap:2px;margin-left:auto;flex-shrink:0}
-  .dupe-btn{width:22px;height:22px;border-radius:50%;border:none;font-size:14px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:all .12s;padding:0}
-  .dupe-btn.dupe-minus{background:rgba(255,255,255,.25);color:#fff}
-  .dupe-btn.dupe-minus:hover{background:rgba(255,255,255,.4)}
-  .dupe-btn.dupe-plus{background:rgba(255,255,255,.25);color:#fff}
-  .dupe-btn.dupe-plus:hover{background:rgba(255,255,255,.4)}
-  .sticker.miss .dupe-btn.dupe-plus{background:rgba(220,38,38,.1);color:#b91c1c}
-  .sticker.miss .dupe-btn.dupe-plus:hover{background:rgba(220,38,38,.2)}
-  .dupe-badge{background:var(--yellow);color:#78350f;font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;min-width:22px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.2);line-height:1.4}
-  .sticker.miss .dupe-badge{background:#fecaca;color:#991b1b}
+  .dupe-badge{position:absolute;top:-4px;right:-4px;background:var(--yellow);color:#78350f;font-size:9px;font-weight:800;padding:1px 5px;border-radius:999px;min-width:16px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.25);line-height:1.4;z-index:2;pointer-events:none}
+  .sticker{position:relative}
 
   /* Botão compartilhar repetidas */
   .btn-share{background:linear-gradient(180deg,#2cdf6e,#25D366);color:#fff;box-shadow:0 1px 2px rgba(37,211,102,.3),inset 0 1px 0 rgba(255,255,255,.18)}
@@ -377,7 +369,7 @@
       <button class="btn btn-share" onclick="shareDupes()">📤 Compartilhar Repetidas</button>
       <input type="file" id="import-file" accept=".json,application/json" style="display:none" onchange="importData(event)">
     </div>
-    <div class="help">👆 <strong>Toque na figurinha para marcar/desmarcar.</strong> Use os botões <strong>+</strong> e <strong>−</strong> para controlar as repetidas. Vermelho = faltante, Verde = colada, 🟡 = repetida.</div>
+    <div class="help">👆 <strong>Toque</strong> = marca/adiciona repetida · <strong>Segure</strong> = remove. Vermelho = falta · Verde = colada · 🟡 badge = repetidas.</div>
 
     <div class="search-wrap">
       <input type="text" id="search-input" placeholder="🔍 Buscar por código, jogador ou seleção..." oninput="render()">
@@ -830,32 +822,49 @@ async function resetAll() {
   render();
   toast('Tudo limpo!');
 }
-async function toggleSticker(code) {
-  if (haveSet.has(code)) {
-    haveSet.delete(code);
-  } else {
+// Toque = incrementa: não tem → colada → 1 rep → 2 rep ...
+async function tapSticker(code) {
+  if (!haveSet.has(code)) {
     haveSet.add(code);
+  } else {
+    dupesMap.set(code, (dupesMap.get(code) || 0) + 1);
   }
   await saveData();
   render();
 }
+// Toque longo = decrementa: rep -1 → colada → desmarca
+async function longPressSticker(code) {
+  const dupes = dupesMap.get(code) || 0;
+  if (dupes > 0) {
+    if (dupes <= 1) dupesMap.delete(code);
+    else dupesMap.set(code, dupes - 1);
+  } else if (haveSet.has(code)) {
+    haveSet.delete(code);
+  }
+  await saveData();
+  render();
+}
+// Gerencia long-press no touch/mouse
+let longPressTimer = null;
+let longPressTriggered = false;
+function stickerPointerDown(code) {
+  longPressTriggered = false;
+  longPressTimer = setTimeout(() => {
+    longPressTriggered = true;
+    longPressSticker(code);
+  }, 500);
+}
+function stickerPointerUp(code) {
+  clearTimeout(longPressTimer);
+  if (!longPressTriggered) tapSticker(code);
+}
+function stickerPointerCancel() {
+  clearTimeout(longPressTimer);
+  longPressTriggered = false;
+}
 function toggleSection(id) {
   if (expandedSections.has(id)) expandedSections.delete(id);
   else expandedSections.add(id);
-  render();
-}
-async function addDupe(code, e) {
-  e.stopPropagation();
-  dupesMap.set(code, (dupesMap.get(code) || 0) + 1);
-  await saveData();
-  render();
-}
-async function removeDupe(code, e) {
-  e.stopPropagation();
-  const cur = dupesMap.get(code) || 0;
-  if (cur <= 1) dupesMap.delete(code);
-  else dupesMap.set(code, cur - 1);
-  await saveData();
   render();
 }
 function getTotalDupes() {
@@ -864,27 +873,29 @@ function getTotalDupes() {
   return total;
 }
 async function shareDupes() {
-  const entries = [];
+  // Agrupa por seção no formato compacto: "BRA 1, 3(x2), 5 / ARG 2, 7"
+  const groups = [];
+  let totalQty = 0;
   SECTIONS.forEach(sec => {
+    const codes = [];
     sec.items.forEach(it => {
       const qty = dupesMap.get(it.code) || 0;
-      if (qty > 0) entries.push({code: it.code, name: it.name, qty, section: sec.title});
+      if (qty > 0) {
+        // Extrai só o número do código (BRA5 → 5, FWC3 → FWC3, CC1 → CC1)
+        const num = it.code.replace(sec.id, '');
+        codes.push(qty > 1 ? `${num}(x${qty})` : num);
+        totalQty += qty;
+      }
     });
-  });
-  if (entries.length === 0) { toast('Nenhuma figurinha repetida marcada'); return; }
-  let text = '⚽ FIGURINHAS REPETIDAS — Copa 2026\n';
-  text += '━━━━━━━━━━━━━━━━━━━━━━━━━\n\n';
-  let lastSec = '';
-  entries.forEach(e => {
-    if (e.section !== lastSec) {
-      text += `\n📌 ${e.section}\n`;
-      lastSec = e.section;
+    if (codes.length > 0) {
+      groups.push(`${sec.flag} ${sec.title}: ${codes.join(', ')}`);
     }
-    text += `  ${e.code} — ${e.name} (${e.qty}x)\n`;
   });
-  text += `\n━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
-  text += `Total: ${entries.reduce((s,e)=>s+e.qty,0)} figurinhas repetidas\n`;
-  text += `🔗 Gerado pelo App Álbum Panini 2026`;
+  if (groups.length === 0) { toast('Nenhuma figurinha repetida marcada'); return; }
+  let text = `⚽ MINHAS REPETIDAS — Copa 2026\n\n`;
+  text += groups.join('\n');
+  text += `\n\n📊 Total: ${totalQty} figurinhas repetidas`;
+  text += `\n📲 Gerado pelo App Álbum Panini 2026`;
   // Tenta Web Share API primeiro
   if (navigator.share) {
     try {
@@ -897,7 +908,6 @@ async function shareDupes() {
     await navigator.clipboard.writeText(text);
     toast('📋 Lista copiada! Cole no WhatsApp ou onde quiser');
   } catch (e) {
-    // Fallback final: prompt
     prompt('Copie a lista abaixo:', text);
   }
 }
@@ -961,18 +971,11 @@ function render() {
       const dupeQty = dupesMap.get(it.code) || 0;
 
       const safeName = it.name.replace(/"/g,'&quot;').replace(/</g,'&lt;');
-      html += `<div class="sticker ${cls}${sp}" onclick="toggleSticker('${it.code}')" title="${it.code} — ${safeName}">`;
+      html += `<div class="sticker ${cls}${sp}" onpointerdown="stickerPointerDown('${it.code}')" onpointerup="stickerPointerUp('${it.code}')" onpointerleave="stickerPointerCancel()" oncontextmenu="event.preventDefault()" title="${it.code} — ${safeName}">`;
+      if (dupeQty > 0) html += `<span class="dupe-badge">${dupeQty}x</span>`;
       html += `<span class="st-icon">${icon}</span>`;
       html += `<span class="code">${it.code}</span>`;
       html += `<span class="nm">${safeName}</span>`;
-      // Controles de repetidas
-      html += `<span class="dupe-controls">`;
-      if (dupeQty > 0) {
-        html += `<button class="dupe-btn dupe-minus" onclick="removeDupe('${it.code}',event)" title="Remover repetida">−</button>`;
-        html += `<span class="dupe-badge">${dupeQty}x</span>`;
-      }
-      html += `<button class="dupe-btn dupe-plus" onclick="addDupe('${it.code}',event)" title="Adicionar repetida">+</button>`;
-      html += `</span>`;
       html += `</div>`;
     });
     html += `</div></div></div>`;
